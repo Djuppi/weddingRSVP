@@ -24,7 +24,7 @@ export const tokens = (mode) => ({
           200: "#a1a4ab",
           300: "#727681",
           400: "#1F2A40",
-          500: "#141b2d",
+          500: "#de9a348f",
           600: "#101624",
           700: "#0c101b",
           800: "#080b12",
@@ -63,6 +63,9 @@ export const tokens = (mode) => ({
           200: "#004072",
           100: "#002641",
         },
+        goldAccent: {
+          500: "#de9a348f",
+        },
       }
     : {
         grey: {
@@ -77,11 +80,11 @@ export const tokens = (mode) => ({
           900: "#fff",
         },
         primary: {
-          100: "#e5efe5",
+          100: "#de9a348f",
           200: "#080b12",
           300: "#0c101b",
-          400: "#f2f0f0", // manually changed
-          500: "#191819",
+          400: "#de9a348f", // manually changed
+          500: "#de9a348f",
           600: "#1F2A40",
           700: "#727681",
           800: "#a1a4ab",
@@ -121,6 +124,9 @@ export const tokens = (mode) => ({
           800: "#004072",
           900: "#002641",
         },
+        goldAccent: {
+          500: "#de9a348f",
+        },
       }),
 });
 
@@ -128,7 +134,11 @@ export const themeSettings = (mode) => {
   const colors = tokens(mode);
   return {
     overrides: {
-      
+      palette: {
+        primary: {
+          main: colors.goldAccent[500],
+        },
+      },
     },
     palette: {
       mode: mode,
@@ -136,13 +146,13 @@ export const themeSettings = (mode) => {
         ? {
             // palette values for dark mode
             primary: {
-              main: colors.primary[500],
+              main: colors.goldAccent[500],
             },
             secondary: {
               main: colors.greenAccent[500],
             },
             info: {
-              main: colors.blueAccent[400],
+              main: colors.goldAccent[500],
             },
             error: {
               main: colors.redAccent[400],
@@ -159,13 +169,13 @@ export const themeSettings = (mode) => {
         : {
             // palette values for light mode
             primary: {
-              main: colors.primary[100],
+              main: colors.goldAccent[500],
             },
             secondary: {
               main: colors.greenAccent[500],
             },
             info: {
-              main: colors.blueAccent[500],
+              main: colors.goldAccent[500],
             },
             error: {
               main: colors.redAccent[500],
@@ -186,7 +196,8 @@ export const themeSettings = (mode) => {
       h1: {
         fontFamily: ["Oleo Script", "sans-serif"].join(","),
         fontSize: 40,
-        background: "linear-gradient(to left, transparent, green, green, transparent)"
+        background:
+          "linear-gradient(to left, transparent, green, green, transparent)",
       },
       h2: {
         fontFamily: ["Oleo Script", "sans-serif"].join(","),

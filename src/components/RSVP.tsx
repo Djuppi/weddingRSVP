@@ -1,4 +1,5 @@
 import {
+  Button,
   FormControl,
   FormControlLabel,
   FormLabel,
@@ -11,8 +12,10 @@ import {
 } from "@mui/material";
 import { TextFieldProps } from "@mui/material";
 import React from "react";
-import { alpha, styled } from '@mui/material/styles';
+import { alpha, styled } from "@mui/material/styles";
 import CssTextField from "./StyledTextField";
+import StyledRadio from "./StyledRadioButton";
+import { Css } from "@mui/icons-material";
 
 type Props = {};
 
@@ -23,7 +26,10 @@ const RSVP = (props: Props) => {
         padding: "2rem",
         display: "flex",
         justifyContent: "center",
+        alignItems: "center",
+        alignSelf: "center",
         flexDirection: "column",
+        width: "60%",
       }}
     >
       <Typography variant="h2" component="h5">
@@ -36,29 +42,19 @@ const RSVP = (props: Props) => {
           display: "flex",
           justifyContent: "center",
           flexDirection: "column",
+          width: "500px",
+          gap: "2rem",
         }}
       >
         <Grid container spacing={3}>
           <Grid item xs={12}>
-            <Typography>Gjæst 1</Typography>
-          </Grid>
-          <Grid item xs={6}>
-            {CssTextField("Fornavn", true)}
-          </Grid>
-          <Grid item xs={6}>
-          {CssTextField("Fornavn", true)}
+            {CssTextField("Gjest 1", true)}
           </Grid>
           <Grid item xs={12}>
-            <Typography>Gjæst 2</Typography>
-          </Grid>
-          <Grid item xs={6}>
-          {CssTextField("Fornavn", false)}
-          </Grid>
-          <Grid item xs={6}>
-          {CssTextField("Fornavn", false)}
+            {CssTextField("Gjest 2", false)}
           </Grid>
           <Grid item xs={12}>
-            <FormLabel id="demo-radio-buttons-group-label">
+            <FormLabel id="demo-radio-buttons-group-label" color="primary">
               Kan vi forvente dere?
             </FormLabel>
             <RadioGroup
@@ -68,21 +64,43 @@ const RSVP = (props: Props) => {
               <FormControlLabel
                 sx={{ margin: "0 auto" }}
                 value="yes"
-                control={<Radio />}
-                label="Jeg/vi kommer gerne"
+                control={StyledRadio()}
+                color="#de9a348f"
+                label="Jeg/vi kommer gjerne"
               />
               <FormControlLabel
                 sx={{ margin: "0 auto" }}
                 value="no"
-                control={<Radio />}
-                label="Jeg/vi kan desværre ikke"
+                control={StyledRadio()}
+                label="Jeg/vi kan desverre ikke"
               />
             </RadioGroup>
           </Grid>
           <Grid item xs={12}>
-            {CssTextField("Allergener", false)}
+            <FormLabel id="allergies">
+              Har du/dere noen allergener vi må ta hensyn til?
+            </FormLabel>
+            {CssTextField("Gjest 1", false)}
+            {CssTextField("Gjest 2", false)}
           </Grid>
         </Grid>
+        <Grid item xs={12}>
+          {CssTextField(
+            "Ønsker du å bidra med noe (tale/underholdning)?",
+            false,
+            true
+          )}
+        </Grid>
+        <Typography>
+          <em>Har du spørsmål ta gjerne kontakt med oss på mail under.</em>
+        </Typography>
+        <Button
+          variant="contained"
+          sx={{ backgroundColor: "#de9a348f" }}
+          type="submit"
+        >
+          Send
+        </Button>
       </FormControl>
     </Paper>
   );

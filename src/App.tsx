@@ -1,5 +1,3 @@
-
-
 import "./App.css";
 import StyledAppBar from "@components/StyledAppBar";
 import {
@@ -26,8 +24,19 @@ function App() {
     <>
       <ThemeProvider theme={lightTheme}>
         <StyledAppBar />
-        <Box sx={{ height: "50vh", margin: "10rem 0", display: "flex", flexDirection: "column", gap: "1rem", justifyContent: "center" }}>
-          <Typography color="grey">Susanne & Aske</Typography>
+        <Box
+          sx={{
+            height: "50vh",
+            margin: "10rem 0",
+            display: "flex",
+            flexDirection: "column",
+            gap: "1rem",
+            justifyContent: "center",
+          }}
+        >
+          <Typography sx={{ fontWeight: "500" }} variant="h6" color="grey">
+            Susanne & Aske
+          </Typography>
           <Typography variant="h1" component="h1" className="header">
             Vi gifter oss
           </Typography>

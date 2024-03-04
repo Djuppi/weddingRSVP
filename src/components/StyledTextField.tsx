@@ -2,6 +2,7 @@ import { TextField, TextFieldProps } from "@mui/material";
 import { alpha, styled } from "@mui/material/styles";
 
 const StyledTextField = styled(TextField)<TextFieldProps>(({ theme }) => ({
+  width: "80%",
   "& label.Mui-focused": {
     color: "#de9a348f",
   },
@@ -15,6 +16,18 @@ const StyledTextField = styled(TextField)<TextFieldProps>(({ theme }) => ({
   },
 }));
 
-export default function CssTextField(label: string, required: boolean) {
-  return <StyledTextField variant="standard" label={label} required={required} />;
+export default function CssTextField(
+  label: string,
+  required: boolean,
+  multiline: boolean = false
+) {
+  return (
+    <StyledTextField
+      variant="standard"
+      label={label}
+      required={required}
+      multiline={multiline}
+      rows={multiline ? 3 : 1}
+    />
+  );
 }
