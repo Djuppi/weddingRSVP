@@ -2,7 +2,6 @@ import {
   Button,
   FormControl,
   FormControlLabel,
-  FormLabel,
   Grid,
   Paper,
   RadioGroup,
@@ -10,18 +9,20 @@ import {
 } from "@mui/material";
 import CssTextField from "./StyledTextField";
 import StyledRadio from "./StyledRadioButton";
+import CustomFormLabel from "./StyledFormLabel";
 
 const RSVP = () => {
   return (
     <Paper
       sx={{
         padding: "2rem",
+        margin: "1rem",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
         alignSelf: "center",
         flexDirection: "column",
-        width: "60%",
+        width: "40%",
       }}
     >
       <Typography variant="h2" component="h5">
@@ -46,9 +47,10 @@ const RSVP = () => {
             {CssTextField("Gjest 2", false)}
           </Grid>
           <Grid item xs={12}>
-            <FormLabel id="demo-radio-buttons-group-label" color="primary">
-              Kan vi forvente dere?
-            </FormLabel>
+            {CustomFormLabel(
+              "Kan vi forvente deg/dere?",
+              "radio-buttons-group"
+            )}
             <RadioGroup
               aria-labelledby="demo-radio-buttons-group-label"
               name="radio-buttons-group"
@@ -69,9 +71,7 @@ const RSVP = () => {
             </RadioGroup>
           </Grid>
           <Grid item xs={12}>
-            <FormLabel id="allergies">
-              Har du/dere noen allergener vi må ta hensyn til?
-            </FormLabel>
+            {CustomFormLabel("Har du/dere noen allergier?", "allergies")}
             {CssTextField("Gjest 1", false)}
             {CssTextField("Gjest 2", false)}
           </Grid>
@@ -88,7 +88,10 @@ const RSVP = () => {
         </Typography>
         <Button
           variant="contained"
-          sx={{ backgroundColor: "#de9a348f" }}
+          sx={{
+            backgroundColor: "#de9a348f",
+            "&:hover": { backgroundColor: "#de9a34" },
+          }}
           type="submit"
         >
           Send

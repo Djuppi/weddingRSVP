@@ -2,16 +2,25 @@ import "./App.css";
 import StyledAppBar from "@components/StyledAppBar";
 import {
   Box,
+  Button,
   Card,
   CardHeader,
   Divider,
+  Drawer,
   Grid,
   Link,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
   ThemeProvider,
   Typography,
   createTheme,
 } from "@mui/material";
 import RSVP from "@components/RSVP";
+import MyDrawer from "@components/InfoDrawer";
+import { useState } from "react";
+import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 
 const lightTheme = createTheme({
   palette: {
@@ -20,6 +29,12 @@ const lightTheme = createTheme({
 });
 
 function App() {
+  const [open, toggleDrawer] = useState<boolean>(false);
+
+  const closeDrawer = () => {
+    toggleDrawer(false);
+  };
+
   return (
     <>
       <ThemeProvider theme={lightTheme}>
@@ -27,14 +42,27 @@ function App() {
         <Box
           sx={{
             height: "50vh",
-            margin: "10rem 0",
+            margin: "7rem 0 5rem 0",
             display: "flex",
             flexDirection: "column",
-            gap: "1rem",
+            gap: "2rem",
             justifyContent: "center",
           }}
         >
-          <Typography sx={{ fontWeight: "500" }} variant="h6" color="grey">
+          <Button
+            onClick={() => toggleDrawer(true)}
+            sx={{ alignSelf: "start" }}
+          >
+            <MenuOutlinedIcon />
+          </Button>
+          <MyDrawer open={open} onClose={closeDrawer} />
+          <img
+            src="src/assets/Us_b_w.png"
+            alt="bride and groom"
+            width={300}
+            style={{ position: "absolute", right: "70px", top: "130px" }}
+          />
+          <Typography sx={{ fontWeight: "500" }} variant="h6" color="black">
             Susanne & Aske
           </Typography>
           <Typography variant="h1" component="h1" className="header">
@@ -54,44 +82,22 @@ function App() {
           <Typography variant="h4" component="h2" color="grey">
             10. August 2024
           </Typography>
+          <Box sx={{ alignSelf: "center", width: "60%" }}>
+            <Typography color="grey">
+              Velkommen til vår bryllupsside!
+            </Typography>
+            <Typography color="grey">
+              Her vil vi oppdatere dere om program for dagen og annen praktisk
+              informasjon så fort vi har alle detaljer på plass. Vi setter stor
+              pris på om dere i første omgang vil fylle ut skjemaet under og
+              svare på vår invitasjon så snart som mulig, og senest innen XX.XX.
+            </Typography>
+            <Typography color="grey">
+              Vi gleder oss utrolig mye til å feire dagen sammen med dere ❤{" "}
+            </Typography>
+          </Box>
         </Box>
         <RSVP />
-        <Grid
-          container
-          spacing={4}
-          sx={{
-            backgroundColor: "#496c52",
-            padding: "1rem 2rem",
-            color: "white",
-          }}
-        >
-          <Grid item xs={12} justifyContent="start">
-            <Typography variant="h4" component="h4">
-              Info
-            </Typography>
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <Card sx={{ backgroundColor: "#6db17f00", padding: "2rem" }}>
-              <CardHeader title="Hotel" />
-              <Typography>Kurhotel Skodsborg</Typography>
-              <Link sx={{ color: "#de9a348f" }} href="https://skodsborg.dk">
-                Book her
-              </Link>
-            </Card>
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <Card sx={{ background: "#6db17f00", padding: "2rem" }}>
-              <CardHeader title="Program" />
-              <Typography>Kommer senere</Typography>
-            </Card>
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <Card sx={{ background: "#bd002900", padding: "2rem" }}>
-              <CardHeader title="Kontakt" />
-              <Typography>Mail@test.no</Typography>
-            </Card>
-          </Grid>
-        </Grid>
       </ThemeProvider>
     </>
   );
