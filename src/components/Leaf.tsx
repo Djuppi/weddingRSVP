@@ -1,10 +1,9 @@
-type Props = {};
 
 const randomN = () => {
   return Math.random() * 100;
 };
 
-const Leaf = (props: Props) => {
+const Leaf = () => {
   return (
     <div className="branch">
       {[1, 2, 3].map((leaf) => {

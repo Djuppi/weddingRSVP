@@ -5,21 +5,13 @@ import {
   FormLabel,
   Grid,
   Paper,
-  Radio,
   RadioGroup,
-  TextField,
   Typography,
 } from "@mui/material";
-import { TextFieldProps } from "@mui/material";
-import React from "react";
-import { alpha, styled } from "@mui/material/styles";
 import CssTextField from "./StyledTextField";
 import StyledRadio from "./StyledRadioButton";
-import { Css } from "@mui/icons-material";
 
-type Props = {};
-
-const RSVP = (props: Props) => {
+const RSVP = () => {
   return (
     <Paper
       sx={{

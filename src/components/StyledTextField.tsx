@@ -1,7 +1,7 @@
 import { TextField, TextFieldProps } from "@mui/material";
-import { alpha, styled } from "@mui/material/styles";
+import { styled } from "@mui/material/styles";
 
-const StyledTextField = styled(TextField)<TextFieldProps>(({ theme }) => ({
+const StyledTextField = styled(TextField)<TextFieldProps>(() => ({
   width: "80%",
   "& label.Mui-focused": {
     color: "#de9a348f",

@@ -2,21 +2,11 @@ import {
   AppBar,
   Box,
   Button,
-  IconButton,
-  Link,
-  List,
-  ListItem,
-  Menu,
-  MenuItem,
   Toolbar,
-  Typography,
   styled,
 } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
 import { useState } from "react";
 import Leaf from "./Leaf";
-
-type Props = {};
 
 const StyledAppBarComponent = styled(AppBar)`
   background: rgba(255, 255, 255, 0.5);
@@ -29,12 +19,9 @@ const StyledAppBarComponent = styled(AppBar)`
   box-shadow: none;
 `;
 
-const StyledAppBar = (props: Props) => {
-  const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
+const StyledAppBar = () => {
+  const [, setAnchorElNav] = useState<null | HTMLElement>(null);
 
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget);
-  };
   const pages = ["Home", "Info", "RSVP"];
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);

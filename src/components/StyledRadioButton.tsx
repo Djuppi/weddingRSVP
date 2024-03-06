@@ -1,7 +1,7 @@
-import { Radio, RadioProps, TextField, TextFieldProps } from "@mui/material";
-import { alpha, styled } from "@mui/material/styles";
+import { Radio, RadioProps } from "@mui/material";
+import { styled } from "@mui/material/styles";
 
-const StyledRadioButton = styled(Radio)<RadioProps>(({ theme }) => ({
+const StyledRadioButton = styled(Radio)<RadioProps>(() => ({
   "&.Mui-checked": {
     color: "#de9a348f",
   },

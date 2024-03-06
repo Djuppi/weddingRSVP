@@ -1,10 +1,6 @@
 import { Grid } from "@mui/material";
-import React from "react";
 
-type Props = {
-};
-
-const InfoContainer = (props: Props) => {
+const InfoContainer = () => {
   return (
     <Grid
       container
