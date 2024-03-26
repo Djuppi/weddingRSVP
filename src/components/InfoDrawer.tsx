@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 
-const drawerWidth = 240;
+// const drawerWidth = 240;
 
 // const useStyles = {
 //   drawer: {

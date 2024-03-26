@@ -1,12 +1,8 @@
-import {
-  AppBar,
-  Box,
-  Button,
-  Toolbar,
-  styled,
-} from "@mui/material";
+import { AppBar, Box, Button, Toolbar, styled } from "@mui/material";
 import { useState } from "react";
 import Leaf from "./Leaf";
+import { RefreshSharp } from "@mui/icons-material";
+import "scroll-behavior-polyfill";
 
 const StyledAppBarComponent = styled(AppBar)`
   background: rgba(255, 255, 255, 0.5);
@@ -19,17 +15,37 @@ const StyledAppBarComponent = styled(AppBar)`
   box-shadow: none;
 `;
 
-const StyledAppBar = () => {
-  const [, setAnchorElNav] = useState<null | HTMLElement>(null);
+interface Props {
+  refs: {
+    programContainerRef: React.RefObject<HTMLDivElement>;
+    infoContainerRef: React.RefObject<HTMLDivElement>;
+    homeContainerRef: React.RefObject<HTMLDivElement>;
+    rsvpContainerRef: React.RefObject<HTMLDivElement>;
+  };
+}
 
-  const pages = ["Home", "Info", "RSVP"];
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
+const StyledAppBar = (props: Props) => {
+  const { refs } = props;
+  const [achorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
+
+  const pages = [
+    { id: 1, Title: "Home", ref: refs.homeContainerRef },
+    { id: 2, Title: "Info", ref: refs.infoContainerRef },
+    { id: 3, Title: "RSVP", ref: refs.rsvpContainerRef },
+  ];
+
+  const handleClick = (ref: React.RefObject<HTMLDivElement>) => {
+    const element = ref.current;
+    element?.scrollIntoView({
+      behavior: "smooth",
+      block: "end",
+      inline: "nearest",
+    });
   };
 
   return (
     <StyledAppBarComponent position="fixed">
-      <Toolbar>
+      <Toolbar id="back-to-top-anchor">
         <Leaf />
         <Box
           sx={{
@@ -41,11 +57,11 @@ const StyledAppBar = () => {
         >
           {pages.map((page) => (
             <Button
-              key={page}
-              onClick={handleCloseNavMenu}
+              key={page.id}
+              onClick={() => handleClick(page.ref)}
               sx={{ my: 2, color: "black", display: "block" }}
             >
-              {page}
+              {page.Title}
             </Button>
           ))}
         </Box>

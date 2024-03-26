@@ -3,24 +3,27 @@ import StyledAppBar from "@components/StyledAppBar";
 import {
   Box,
   Button,
-  Card,
-  CardHeader,
   Divider,
-  Drawer,
-  Grid,
-  Link,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
+  Fab,
   ThemeProvider,
   Typography,
   createTheme,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 import RSVP from "@components/RSVP";
 import MyDrawer from "@components/InfoDrawer";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
+import InfoContainer from "@components/InfoContainer";
+import ProgramContainer from "@components/ProgramContainer";
+import { ScrollTop } from "@components/ScrollToTop";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import { styled } from "@mui/system";
+
+const CalligraphyText = styled(Typography)`
+  font-family: "CalligraphyFont", cursive;
+`;
 
 const lightTheme = createTheme({
   palette: {
@@ -31,6 +34,15 @@ const lightTheme = createTheme({
 function App() {
   const [open, toggleDrawer] = useState<boolean>(false);
 
+  const programContainerRef = useRef<HTMLDivElement>(null);
+  const infoContainerRef = useRef<HTMLDivElement>(null);
+  const homeContainerRef = useRef<HTMLDivElement>(null);
+  const rsvpContainerRef = useRef<HTMLDivElement>(null);
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMediumScreen = useMediaQuery(theme.breakpoints.down("md"));
+  const isLargeScreen = useMediaQuery(theme.breakpoints.down("lg"));
+
   const closeDrawer = () => {
     toggleDrawer(false);
   };
@@ -38,10 +50,16 @@ function App() {
   return (
     <>
       <ThemeProvider theme={lightTheme}>
-        <StyledAppBar />
+        <StyledAppBar
+          refs={{
+            homeContainerRef: homeContainerRef,
+            programContainerRef: programContainerRef,
+            infoContainerRef: infoContainerRef,
+            rsvpContainerRef: rsvpContainerRef,
+          }}
+        />
         <Box
           sx={{
-            height: "50vh",
             margin: "7rem 0 5rem 0",
             display: "flex",
             flexDirection: "column",
@@ -49,22 +67,24 @@ function App() {
             justifyContent: "center",
           }}
         >
-          <Button
-            onClick={() => toggleDrawer(true)}
-            sx={{ alignSelf: "start" }}
-          >
-            <MenuOutlinedIcon />
-          </Button>
-          <MyDrawer open={open} onClose={closeDrawer} />
           <img
             src="src/assets/Us_b_w.png"
             alt="bride and groom"
-            width={300}
-            style={{ position: "absolute", right: "70px", top: "130px" }}
+            width={isLargeScreen ? 120 : 300}
+            style={{
+              position: "absolute",
+              right: isMediumScreen ? "5px" : "70px",
+              top: isMediumScreen ? "70px" : "130px",
+            }}
           />
-          <Typography sx={{ fontWeight: "500" }} variant="h6" color="black">
+
+          <CalligraphyText
+            sx={{ fontWeight: "500" }}
+            variant="h6"
+            color="black"
+          >
             Susanne & Aske
-          </Typography>
+          </CalligraphyText>
           <Typography variant="h1" component="h1" className="header">
             Vi gifter oss
           </Typography>
@@ -97,7 +117,14 @@ function App() {
             </Typography>
           </Box>
         </Box>
-        <RSVP />
+        <RSVP ref={rsvpContainerRef} />
+        <InfoContainer />
+        <ProgramContainer ref={programContainerRef} />
+        <ScrollTop window={() => window}>
+          <Fab size="small" aria-label="scroll back to top">
+            <KeyboardArrowUpIcon />
+          </Fab>
+        </ScrollTop>
       </ThemeProvider>
     </>
   );
