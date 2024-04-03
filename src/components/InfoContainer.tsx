@@ -45,8 +45,8 @@ const InfoContainer = () => {
           Skodsborg Strandvej 139, 2942 Skodsborg
         </Link>
         <Typography>Kontakt:</Typography>
-        <Link sx={{ color: "#de9a348f" }} href="mailto:susogaske@gmail.com">
-          SusogAske@gmail.com
+        <Link sx={{ color: "#de9a348f" }} href="mailto:askeogsus@gmail.com">
+          AskeogSus@gmail.com
         </Link>
       </Grid>
       <Grid item xs={12} sm={6}>
