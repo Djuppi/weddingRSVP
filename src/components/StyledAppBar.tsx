@@ -1,8 +1,6 @@
-import { AppBar, Box, Button, Toolbar, styled } from "@mui/material";
-import { useState } from "react";
+import { AppBar, Box, Toolbar, styled } from "@mui/material";
 import Leaf from "./Leaf";
-import { RefreshSharp } from "@mui/icons-material";
-import "scroll-behavior-polyfill";
+import { Link } from "react-scroll";
 
 const StyledAppBarComponent = styled(AppBar)`
   background: rgba(255, 255, 255, 0.5);
@@ -26,22 +24,13 @@ interface Props {
 
 const StyledAppBar = (props: Props) => {
   const { refs } = props;
-  const [achorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
 
   const pages = [
-    { id: 1, Title: "Home", ref: refs.homeContainerRef },
-    { id: 2, Title: "Info", ref: refs.infoContainerRef },
-    { id: 3, Title: "RSVP", ref: refs.rsvpContainerRef },
+    { id: 1, Title: "Home", ref: "home" },
+    { id: 2, Title: "RSVP", ref: "rsvp" },
+    { id: 3, Title: "Info", ref: "info" },
+    { id: 4, Title: "Program", ref: "program" },
   ];
-
-  const handleClick = (ref: React.RefObject<HTMLDivElement>) => {
-    const element = ref.current;
-    element?.scrollIntoView({
-      behavior: "smooth",
-      block: "end",
-      inline: "nearest",
-    });
-  };
 
   return (
     <StyledAppBarComponent position="fixed">
@@ -56,13 +45,17 @@ const StyledAppBar = (props: Props) => {
           }}
         >
           {pages.map((page) => (
-            <Button
-              key={page.id}
-              onClick={() => handleClick(page.ref)}
-              sx={{ my: 2, color: "black", display: "block" }}
-            >
+            <Link
+              to={page.ref}
+              spy={true}
+              smooth={true}
+              offset={-100}
+              duration={500}
+              style={{ cursor: "pointer" }}
+              >
+            
               {page.Title}
-            </Button>
+            </Link>
           ))}
         </Box>
       </Toolbar>

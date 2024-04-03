@@ -7,6 +7,7 @@ const StyledRadioButton = styled(Radio)<RadioProps>(() => ({
   },
 }));
 
-export default function StyledRadio() {
-  return <StyledRadioButton />;
+export default function StyledRadio(props: any) {
+  const { name, label, ...rest } = props;
+  return <StyledRadioButton {...rest} required />;
 }

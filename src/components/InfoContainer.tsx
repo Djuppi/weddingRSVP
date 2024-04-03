@@ -1,4 +1,5 @@
 import { Grid, Link, Typography } from "@mui/material";
+import Images from "../Images";
 
 const InfoContainer = () => {
   return (
@@ -8,6 +9,7 @@ const InfoContainer = () => {
         margin: "1rem 0 0 0",
         color: "white",
       }}
+      id="info"
     >
       <Grid
         item
@@ -49,7 +51,7 @@ const InfoContainer = () => {
       </Grid>
       <Grid item xs={12} sm={6}>
         <img
-          src="src/assets/Skodsborg.png"
+          src={Images.skodsborg}
           alt="hotel"
           width="100%"
           height="100%"

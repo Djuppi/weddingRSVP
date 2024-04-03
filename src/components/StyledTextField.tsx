@@ -1,5 +1,6 @@
 import { TextField, TextFieldProps } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import { Field, useField } from "formik";
 
 const StyledTextField = styled(TextField)<TextFieldProps>(() => ({
   width: "80%",
@@ -16,18 +17,16 @@ const StyledTextField = styled(TextField)<TextFieldProps>(() => ({
   },
 }));
 
-export default function CssTextField(
-  label: string,
-  required: boolean,
-  multiline: boolean = false
-) {
+export default function CssTextField(props: any) {
+  const { name, label, ...rest } = props;
+  const [field] = useField(name);
   return (
-    <StyledTextField
+    <Field
       variant="standard"
       label={label}
-      required={required}
-      multiline={multiline}
-      rows={multiline ? 3 : 1}
+      {...field}
+      {...rest}
+      as={StyledTextField}
     />
   );
 }

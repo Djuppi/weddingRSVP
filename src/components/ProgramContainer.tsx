@@ -1,29 +1,25 @@
 import {
   Grid,
-  Link,
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
   Typography,
 } from "@mui/material";
-import React from "react";
+import Images from "../Images";
 
-type Props = {
-  ref: React.RefObject<HTMLDivElement>;
-};
-
-const ProgramContainer = (props: Props) => {
+const ProgramContainer = () => {
   return (
     <Grid
       container
       sx={{
         color: "white",
       }}
+      id="program"
     >
       <Grid item xs={12} sm={6}>
         <img
-          src="src/assets/Skodsborg.png"
+          src={Images.skodsborg}
           alt="hotel"
           width="100%"
           height="100%"

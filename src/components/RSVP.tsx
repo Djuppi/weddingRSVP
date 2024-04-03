@@ -1,29 +1,49 @@
-import { Button, Grid, Paper, Typography } from "@mui/material";
-import { Field, Form, Formik } from "formik";
-import React, { RefObject } from "react";
+import {
+  Button,
+
+  Grid,
+  MobileStepper,
+  Paper,
+  Typography,
+  useTheme,
+} from "@mui/material";
+import { Form, Formik } from "formik";
+import React, { RefObject, useState } from "react";
 import submitForm from "../api/SubmitForm";
-import CssTextField from "./StyledTextField";
-import StyledRadio from "./StyledRadioButton";
-import CustomFormLabel from "./StyledFormLabel";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
+import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
+import InfoForm from "./InfoForm";
+import FoodForm from "./FoodForm";
+import AccommodationForm from "./AccommodationForm";
 
-interface RSVPFormValues {
+export interface RSVPFormValues {
   guest1: string;
   guest2: string;
   expectation: string;
   allergies1: string;
   allergies2: string;
   contribution: string;
+  roomType: "Dobbelrum" | "Enkeltrum" | "Ingen overnatning" | "";
+  stayDuration: 0 | 1 | 2;
+  mainCourse: "Kød til hovedret" | "Fisk til hovedret" | "";
 }
 
-interface Props {
-  ref: RefObject<HTMLDivElement>;
-}
+const RSVP = React.forwardRef(({},ref) => {
+  const theme = useTheme();
+  const [activeStep, setActiveStep] = useState(0);
 
-const RSVP = React.forwardRef((props: Props, ref) => {
+  const handleNext = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+  };
+
+  const handleBack = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  };
+
   const handleSubmit = (values: RSVPFormValues) => {
-    console.log(values)
+    console.log(values);
     // Create the form data
     const formData = new FormData();
     formData.append("Name1", values.guest1);
@@ -41,6 +61,21 @@ const RSVP = React.forwardRef((props: Props, ref) => {
       toast.error("Noe gikk galt, prøv igjen senere");
     }
   };
+
+  const steps = [
+    {
+      label: 'Info om dere',
+      component: () => <InfoForm />,
+    },
+    {
+      label: 'Velg mat',
+      component: (values: RSVPFormValues) => <FoodForm values={values} />
+    },
+    {
+      label: 'Ønsker du å overnatte på hotellet? Fyld gjerne inn under.',
+      component: (values: RSVPFormValues) => <AccommodationForm values={values} />
+    },
+  ];
 
   return (
     <Grid container xs={12} justifyContent="center">
@@ -69,7 +104,7 @@ const RSVP = React.forwardRef((props: Props, ref) => {
           <Typography variant="h2" component="h5">
             RSVP
           </Typography>
-          <Typography>Vi ber deg om å svare senest d. ??.??</Typography>
+          <Typography>{steps[activeStep].label}</Typography>
           <Formik
             initialValues={{
               guest1: "",
@@ -78,94 +113,79 @@ const RSVP = React.forwardRef((props: Props, ref) => {
               allergies1: "",
               allergies2: "",
               contribution: "",
+              roomType: '',
+              stayDuration: 0,
+              mainCourse: "",
             }}
             onSubmit={handleSubmit}
           >
-            <Form
-              style={{
-                padding: "2rem",
-                display: "flex",
-                justifyContent: "center",
-                flexDirection: "column",
-                width: "100%",
-                gap: "2rem",
-              }}
-            >
-              <Grid container spacing={3}>
-                <Grid item xs={12}>
-                  <Field
-                    name="guest1"
-                    component={"input"}
-                    label="Gjest 1"
-                    required
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <Field
-                    name="guest2"
-                    component={"input"}
-                    label="Gjest 2"
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  {/* <CustomFormLabel
-                    label="Kan vi forvente deg/dere?"
-                    name="expectation"
-                  /> */}
-                  <Field
-                    name="expectation"
-                    type={"radio"}
-                    value="yes"
-                    label="Jeg/vi kommer gjerne"
-                  />
-                  <Field
-                    name="expectation"
-                    type={"radio"}
-                    value="no"
-                    label="Jeg/vi kan dessverre ikke"
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  {/* <CustomFormLabel
-                    label="Har du/dere noen allergier?"
-                    name="allergies"
-                  /> */}
-                  <Field
-                    name="allergies1"
-                    component={"input"}
-                    label="Gjest 1"
-                  />
-                  <Field
-                    name="allergies2"
-                    component={"input"}
-                    label="Gjest 2"
-                  />
-                </Grid>
-              </Grid>
-              <Grid item xs={12}>
-                <Field
-                  name="contribution"
-                  component={"input"}
-                  label="Ønsker du å bidra med noe (tale/underholdning)?"
-                  multiline
-                />
-              </Grid>
-              <Typography>
-                <em>
-                  Har du spørsmål ta gjerne kontakt med oss på mail under.
-                </em>
-              </Typography>
-              <Button
-                variant="contained"
-                sx={{
-                  backgroundColor: "#de9a348f",
-                  "&:hover": { backgroundColor: "#de9a34" },
+            {({ values }) => (
+              <Form
+                style={{
+                  padding: "2rem",
+                  display: "flex",
+                  justifyContent: "center",
+                  flexDirection: "column",
+                  width: "100%",
+                  gap: "2rem",
                 }}
-                type="submit"
               >
-                Send
-              </Button>
-            </Form>
+                <Grid container spacing={3}>
+                  {steps[activeStep].component(values)}
+                </Grid>
+              
+                <Typography>
+                  <em>
+                    Har du spørsmål ta gjerne kontakt med oss på mail under.
+                  </em>
+                </Typography>
+                <MobileStepper
+                  variant="dots"
+                  steps={3}
+                  position="static"
+                  activeStep={activeStep}
+                  sx={{ maxWidth: 400, flexGrow: 1, color: "#de9a34" }}
+                  nextButton={
+                    <Button
+                      size="small"
+                      onClick={handleNext}
+                      disabled={activeStep === 2}
+                    >
+                      Next
+                      {theme.direction === "rtl" ? (
+                        <KeyboardArrowLeft />
+                      ) : (
+                        <KeyboardArrowRight />
+                      )}
+                    </Button>
+                  }
+                  backButton={
+                    <Button
+                      size="small"
+                      onClick={handleBack}
+                      disabled={activeStep === 0}
+                    >
+                      {theme.direction === "rtl" ? (
+                        <KeyboardArrowRight />
+                      ) : (
+                        <KeyboardArrowLeft />
+                      )}
+                      Back
+                    </Button>
+                  }
+                />
+                <Button
+                  variant="contained"
+                  sx={{
+                    backgroundColor: "#de9a348f",
+                    "&:hover": { backgroundColor: "#de9a34" },
+                  }}
+                  type="submit"
+                >
+                  Send
+                </Button>
+              </Form>
+            )}
           </Formik>
         </Paper>
       </Grid>

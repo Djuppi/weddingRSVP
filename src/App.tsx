@@ -2,7 +2,6 @@ import "./App.css";
 import StyledAppBar from "@components/StyledAppBar";
 import {
   Box,
-  Button,
   Divider,
   Fab,
   ThemeProvider,
@@ -12,14 +11,13 @@ import {
   useTheme,
 } from "@mui/material";
 import RSVP from "@components/RSVP";
-import MyDrawer from "@components/InfoDrawer";
-import { useRef, useState } from "react";
-import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
+import { useRef } from "react";
 import InfoContainer from "@components/InfoContainer";
 import ProgramContainer from "@components/ProgramContainer";
 import { ScrollTop } from "@components/ScrollToTop";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { styled } from "@mui/system";
+import IMAGES from './Images';
 
 const CalligraphyText = styled(Typography)`
   font-family: "CalligraphyFont", cursive;
@@ -32,20 +30,14 @@ const lightTheme = createTheme({
 });
 
 function App() {
-  const [open, toggleDrawer] = useState<boolean>(false);
 
   const programContainerRef = useRef<HTMLDivElement>(null);
   const infoContainerRef = useRef<HTMLDivElement>(null);
   const homeContainerRef = useRef<HTMLDivElement>(null);
   const rsvpContainerRef = useRef<HTMLDivElement>(null);
   const theme = useTheme();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const isMediumScreen = useMediaQuery(theme.breakpoints.down("md"));
   const isLargeScreen = useMediaQuery(theme.breakpoints.down("lg"));
-
-  const closeDrawer = () => {
-    toggleDrawer(false);
-  };
 
   return (
     <>
@@ -66,9 +58,10 @@ function App() {
             gap: "2rem",
             justifyContent: "center",
           }}
+          id="home"
         >
           <img
-            src="src/assets/Us_b_w.png"
+            src={IMAGES.portrait}
             alt="bride and groom"
             width={isLargeScreen ? 120 : 300}
             style={{
@@ -117,9 +110,9 @@ function App() {
             </Typography>
           </Box>
         </Box>
-        <RSVP ref={rsvpContainerRef} />
+        <RSVP />
         <InfoContainer />
-        <ProgramContainer ref={programContainerRef} />
+        <ProgramContainer />
         <ScrollTop window={() => window}>
           <Fab size="small" aria-label="scroll back to top">
             <KeyboardArrowUpIcon />

@@ -19,8 +19,10 @@
     "@mui/material": "^5.15.7",
     "axios": "^1.6.8",
     "formik": "^2.4.5",
+    "formik-material-ui": "^4.0.0-alpha.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-scroll": "^1.9.0",
     "react-toastify": "^10.0.5",
     "scroll-behavior-polyfill": "^2.0.13"
   },
@@ -28,6 +30,7 @@
     "@types/node": "^20.11.16",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
+    "@types/react-scroll": "^1.8.10",
     "@typescript-eslint/eslint-plugin": "^6.14.0",
     "@typescript-eslint/parser": "^6.14.0",
     "@vitejs/plugin-react": "^4.2.1",

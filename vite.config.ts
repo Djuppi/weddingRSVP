@@ -13,5 +13,9 @@ export default defineConfig({
       }
     ]
   },
-  base: "/weddingRSVP/",
+  base: "/",
+  server: {
+    port: 1337,
+  },
+
 })
