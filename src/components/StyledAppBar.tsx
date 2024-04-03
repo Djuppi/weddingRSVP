@@ -13,17 +13,7 @@ const StyledAppBarComponent = styled(AppBar)`
   box-shadow: none;
 `;
 
-interface Props {
-  refs: {
-    programContainerRef: React.RefObject<HTMLDivElement>;
-    infoContainerRef: React.RefObject<HTMLDivElement>;
-    homeContainerRef: React.RefObject<HTMLDivElement>;
-    rsvpContainerRef: React.RefObject<HTMLDivElement>;
-  };
-}
-
-const StyledAppBar = (props: Props) => {
-  const { refs } = props;
+const StyledAppBar = () => {
 
   const pages = [
     { id: 1, Title: "Home", ref: "home" },

@@ -3,7 +3,6 @@ import StyledAppBar from "@components/StyledAppBar";
 import {
   Box,
   Divider,
-  Fab,
   ThemeProvider,
   Typography,
   createTheme,
@@ -11,11 +10,8 @@ import {
   useTheme,
 } from "@mui/material";
 import RSVP from "@components/RSVP";
-import { useRef } from "react";
 import InfoContainer from "@components/InfoContainer";
 import ProgramContainer from "@components/ProgramContainer";
-import { ScrollTop } from "@components/ScrollToTop";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { styled } from "@mui/system";
 import IMAGES from './Images';
 
@@ -30,11 +26,6 @@ const lightTheme = createTheme({
 });
 
 function App() {
-
-  const programContainerRef = useRef<HTMLDivElement>(null);
-  const infoContainerRef = useRef<HTMLDivElement>(null);
-  const homeContainerRef = useRef<HTMLDivElement>(null);
-  const rsvpContainerRef = useRef<HTMLDivElement>(null);
   const theme = useTheme();
   const isMediumScreen = useMediaQuery(theme.breakpoints.down("md"));
   const isLargeScreen = useMediaQuery(theme.breakpoints.down("lg"));
@@ -42,14 +33,7 @@ function App() {
   return (
     <>
       <ThemeProvider theme={lightTheme}>
-        <StyledAppBar
-          refs={{
-            homeContainerRef: homeContainerRef,
-            programContainerRef: programContainerRef,
-            infoContainerRef: infoContainerRef,
-            rsvpContainerRef: rsvpContainerRef,
-          }}
-        />
+        <StyledAppBar />
         <Box
           sx={{
             margin: "7rem 0 5rem 0",
@@ -113,11 +97,6 @@ function App() {
         <RSVP />
         <InfoContainer />
         <ProgramContainer />
-        <ScrollTop window={() => window}>
-          <Fab size="small" aria-label="scroll back to top">
-            <KeyboardArrowUpIcon />
-          </Fab>
-        </ScrollTop>
       </ThemeProvider>
     </>
   );

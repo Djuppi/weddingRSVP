@@ -1,6 +1,5 @@
 import {
   Button,
-
   Grid,
   MobileStepper,
   Paper,
@@ -17,6 +16,7 @@ import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import InfoForm from "./InfoForm";
 import FoodForm from "./FoodForm";
 import AccommodationForm from "./AccommodationForm";
+import CustomMobileStepper from "./StyledMobileStepper";
 
 export interface RSVPFormValues {
   guest1: string;
@@ -30,7 +30,7 @@ export interface RSVPFormValues {
   mainCourse: "Kød til hovedret" | "Fisk til hovedret" | "";
 }
 
-const RSVP = React.forwardRef(({},ref) => {
+const RSVP = React.forwardRef(({}, ref) => {
   const theme = useTheme();
   const [activeStep, setActiveStep] = useState(0);
 
@@ -64,29 +64,24 @@ const RSVP = React.forwardRef(({},ref) => {
 
   const steps = [
     {
-      label: 'Info om dere',
+      label: "Info om dere",
       component: () => <InfoForm />,
     },
     {
-      label: 'Velg mat',
-      component: (values: RSVPFormValues) => <FoodForm values={values} />
+      label: "Velg mat",
+      component: (values: RSVPFormValues) => <FoodForm values={values} />,
     },
     {
-      label: 'Ønsker du å overnatte på hotellet? Fyld gjerne inn under.',
-      component: (values: RSVPFormValues) => <AccommodationForm values={values} />
+      label: "Ønsker du å overnatte på hotellet? Fyld gjerne inn under.",
+      component: (values: RSVPFormValues) => (
+        <AccommodationForm values={values} />
+      ),
     },
   ];
 
   return (
     <Grid container xs={12} justifyContent="center">
-      <Grid
-        item
-        xs={12}
-        md={6}
-        lg={4}
-        alignItems="center"
-        justifyContent="center"
-      >
+      <Grid item xs={3} alignItems="center" justifyContent="center">
         <Paper
           component="div" // Add the missing 'component' prop
           id="rsvp"
@@ -113,7 +108,7 @@ const RSVP = React.forwardRef(({},ref) => {
               allergies1: "",
               allergies2: "",
               contribution: "",
-              roomType: '',
+              roomType: "",
               stayDuration: 0,
               mainCourse: "",
             }}
@@ -133,47 +128,54 @@ const RSVP = React.forwardRef(({},ref) => {
                 <Grid container spacing={3}>
                   {steps[activeStep].component(values)}
                 </Grid>
-              
-                <Typography>
-                  <em>
-                    Har du spørsmål ta gjerne kontakt med oss på mail under.
-                  </em>
-                </Typography>
-                <MobileStepper
-                  variant="dots"
-                  steps={3}
-                  position="static"
-                  activeStep={activeStep}
-                  sx={{ maxWidth: 400, flexGrow: 1, color: "#de9a34" }}
-                  nextButton={
-                    <Button
-                      size="small"
-                      onClick={handleNext}
-                      disabled={activeStep === 2}
-                    >
-                      Next
-                      {theme.direction === "rtl" ? (
-                        <KeyboardArrowLeft />
-                      ) : (
-                        <KeyboardArrowRight />
-                      )}
-                    </Button>
-                  }
-                  backButton={
-                    <Button
-                      size="small"
-                      onClick={handleBack}
-                      disabled={activeStep === 0}
-                    >
-                      {theme.direction === "rtl" ? (
-                        <KeyboardArrowRight />
-                      ) : (
-                        <KeyboardArrowLeft />
-                      )}
-                      Back
-                    </Button>
-                  }
-                />
+                <Grid item xs={12} sx={{ alignItems: "center" }}>
+                  <CustomMobileStepper
+                    activeStep={activeStep}
+                    steps={3}
+                    handleBack={handleBack}
+                    handleNext={handleNext}
+                  />
+                  {/* <MobileStepper
+                    variant="dots"
+                    steps={3}
+                    position="static"
+                    activeStep={activeStep}
+                    sx={{
+                      maxWidth: 400,
+                      flexGrow: 1,
+                      color: "#de9a34",
+                      margin: "0 auto",
+                    }}
+                    nextButton={
+                      <Button
+                        size="small"
+                        onClick={handleNext}
+                        disabled={activeStep === 2}
+                      >
+                        Next
+                        {theme.direction === "rtl" ? (
+                          <KeyboardArrowLeft />
+                        ) : (
+                          <KeyboardArrowRight />
+                        )}
+                      </Button>
+                    }
+                    backButton={
+                      <Button
+                        size="small"
+                        onClick={handleBack}
+                        disabled={activeStep === 0}
+                      >
+                        {theme.direction === "rtl" ? (
+                          <KeyboardArrowRight />
+                        ) : (
+                          <KeyboardArrowLeft />
+                        )}
+                        Back
+                      </Button>
+                    }
+                  /> */}
+                </Grid>
                 <Button
                   variant="contained"
                   sx={{

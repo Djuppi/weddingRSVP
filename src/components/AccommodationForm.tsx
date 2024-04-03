@@ -1,4 +1,4 @@
-import { FormControlLabel, FormLabel, Grid } from "@mui/material";
+import { FormControlLabel, FormLabel, Grid, Typography } from "@mui/material";
 import { RadioGroup } from "formik-material-ui";
 import { Field } from "formik";
 import StyledRadio from "./StyledRadioButton";
@@ -59,6 +59,11 @@ const AccommodationForm = (props: Props) => {
           </Field>
         </Grid>
       )}
+      <Grid item xs={12}>
+      <Typography>
+        <em>Har du spørsmål ta gjerne kontakt med oss på mail under.</em>
+      </Typography>
+      </Grid>
     </>
   );
 };

@@ -19,7 +19,7 @@ const ProgramContainer = () => {
     >
       <Grid item xs={12} sm={6}>
         <img
-          src={Images.skodsborg}
+          src={Images.paviljong}
           alt="hotel"
           width="100%"
           height="100%"

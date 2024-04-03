@@ -139,6 +139,17 @@ export const themeSettings = (mode) => {
           main: colors.goldAccent[500],
         },
       },
+      MuiMobileStepperDot: {
+        root: {
+          color: "#000000", // or 'rgba(0, 0, 0, 1)'
+          "&$active": {
+            color: "#000000",
+          },
+          "&$completed": {
+            color: "#000000",
+          },
+        },
+      },
     },
     palette: {
       mode: mode,
