@@ -2,7 +2,7 @@ import { Button, MobileStepper, styled, useTheme } from "@mui/material";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 
-const StyledMobileStepper = styled(MobileStepper)<{ theme: any }>((props) => ({
+const StyledMobileStepper = styled(MobileStepper)<{ theme: any }>(() => ({
   root: {
     width: "50%",
     flexGrow: 1,

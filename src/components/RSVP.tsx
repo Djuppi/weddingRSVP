@@ -1,18 +1,10 @@
-import {
-  Button,
-  Grid,
-  MobileStepper,
-  Paper,
-  Typography,
-  useTheme,
-} from "@mui/material";
+import { Button, Grid, Paper, Typography } from "@mui/material";
 import { Form, Formik } from "formik";
 import React, { RefObject, useState } from "react";
 import submitForm from "../api/SubmitForm";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
-import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
+
 import InfoForm from "./InfoForm";
 import FoodForm from "./FoodForm";
 import AccommodationForm from "./AccommodationForm";
@@ -31,7 +23,6 @@ export interface RSVPFormValues {
 }
 
 const RSVP = React.forwardRef(({}, ref) => {
-  const theme = useTheme();
   const [activeStep, setActiveStep] = useState(0);
 
   const handleNext = () => {
@@ -81,7 +72,7 @@ const RSVP = React.forwardRef(({}, ref) => {
 
   return (
     <Grid container xs={12} justifyContent="center">
-      <Grid item xs={3} alignItems="center" justifyContent="center">
+      <Grid item xs={12} md={3} alignItems="center" justifyContent="center">
         <Paper
           component="div" // Add the missing 'component' prop
           id="rsvp"
