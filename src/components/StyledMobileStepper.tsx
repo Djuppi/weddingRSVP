@@ -28,6 +28,10 @@ interface Props {
 const CustomMobileStepper = (props: Props) => {
   const { activeStep, steps, handleNext, handleBack } = props;
   const theme = useTheme();
+
+  const handleSubmit = () => {
+    console.log("Submit");
+  };
   return (
     <StyledMobileStepper
       theme={theme}
@@ -35,14 +39,14 @@ const CustomMobileStepper = (props: Props) => {
       steps={steps}
       position="static"
       activeStep={activeStep}
-      sx={{ maxWidth: 400, flexGrow: 1, margin: "0 auto" }}
+      sx={{ maxWidth: 400, flexGrow: 1, margin: "0 auto", }}
       nextButton={
         <Button
           size="small"
-          onClick={handleNext}
-          disabled={activeStep === steps - 1}
+          onClick={activeStep === steps - 1 ? handleSubmit : handleNext}
+          sx={{ backgroundColor: activeStep === steps - 1 && "#de9a348f", color: activeStep === steps - 1 && "white", }}
         >
-          Next
+          {activeStep === steps - 1 ? "Fullfør" : "Neste"}  
           {theme.direction === "rtl" ? (
             <KeyboardArrowLeft />
           ) : (
@@ -57,7 +61,7 @@ const CustomMobileStepper = (props: Props) => {
           ) : (
             <KeyboardArrowLeft />
           )}
-          Back
+          Tilbake
         </Button>
       }
     />

@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #f2f5ef;
+  background-color: #ededed;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -20,11 +20,11 @@ html {
 
 a {
   font-weight: 500;
-  color: #de9a348f;
+  color: #063300a2;
   text-decoration: inherit;
 }
 a:hover {
-  color: #a371278f;
+  color: #031d00a2;
   text-decoration: underline;
 }
 

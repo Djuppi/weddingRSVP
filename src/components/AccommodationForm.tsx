@@ -1,4 +1,10 @@
-import { FormControlLabel, FormLabel, Grid, Typography } from "@mui/material";
+import {
+  FormControlLabel,
+  FormLabel,
+  Grid,
+  Link,
+  Typography,
+} from "@mui/material";
 import { RadioGroup } from "formik-material-ui";
 import { Field } from "formik";
 import StyledRadio from "./StyledRadioButton";
@@ -13,7 +19,7 @@ const AccommodationForm = (props: Props) => {
   return (
     <>
       <Grid item xs={12}>
-        <FormLabel htmlFor="roomType">Romtype:</FormLabel>
+        <FormLabel htmlFor="roomType">Overnatting:</FormLabel>
         <Field
           component={RadioGroup}
           style={{ alignItems: "center" }}
@@ -32,7 +38,7 @@ const AccommodationForm = (props: Props) => {
           />
           <FormControlLabel
             control={<StyledRadio />}
-            label="Jeg finder selv overnatning"
+            label="Jeg/vi finner selv overnatting"
             value="Ingen overnatning"
           />
         </Field>
@@ -48,21 +54,22 @@ const AccommodationForm = (props: Props) => {
           >
             <FormControlLabel
               control={<StyledRadio />}
-              label="1 overnatning (lørdag-søndag)"
+              label="1 natt (lørdag-søndag)"
               value={1}
             />
             <FormControlLabel
               control={<StyledRadio />}
-              label="2 overnatninger (fredag-søndag)"
+              label="2 netter (fredag-søndag)"
               value={2}
             />
           </Field>
         </Grid>
       )}
       <Grid item xs={12}>
-      <Typography>
-        <em>Har du spørsmål ta gjerne kontakt med oss på mail under.</em>
-      </Typography>
+        <Typography fontStyle="italic">
+          Spørsmål? Ta gjerne kontakt med oss på{" "}
+          <Link href="mailto:askeogsus@gmail.com">mail</Link>
+        </Typography>
       </Grid>
     </>
   );

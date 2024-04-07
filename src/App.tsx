@@ -11,9 +11,15 @@ import {
 } from "@mui/material";
 import RSVP from "@components/RSVP";
 import InfoContainer from "@components/InfoContainer";
-import ProgramContainer from "@components/ProgramContainer";
+import CeremonyContainer from "@components/CeremonyContainer";
 import { styled } from "@mui/system";
-import IMAGES from './Images';
+import IMAGES from "./Images";
+import Footer from "@components/Footer";
+import AccommodationContainer from "@components/AccommodationContainer";
+import ReceptionContainer from "@components/ReceptionContainer";
+import DinnerContainer from "@components/DinnerContainer";
+import WishesContainer from "@components/WishesContainer";
+import TransportContainer from "@components/TransportContainer";
 
 const CalligraphyText = styled(Typography)`
   font-family: "CalligraphyFont", cursive;
@@ -84,19 +90,27 @@ function App() {
               Velkommen til vår bryllupsside!
             </Typography>
             <Typography color="grey">
-              Her vil vi oppdatere dere om program for dagen og annen praktisk
-              informasjon så fort vi har alle detaljer på plass. Vi setter stor
-              pris på om dere i første omgang vil fylle ut skjemaet under og
-              svare på vår invitasjon så snart som mulig, og senest innen XX.XX.
-            </Typography>
-            <Typography color="grey">
-              Vi gleder oss utrolig mye til å feire dagen sammen med dere ❤{" "}
+              Her vil vi oppdatere med alle detaljer om dagen, samt praktisk
+              informasjon fortløpende. Vi setter stor pris på om dere i første
+              omgang vil fylle ut RSVP skjemaet, og svare på vår invitasjon så
+              snart som mulig ❤
             </Typography>
           </Box>
         </Box>
         <RSVP />
         <InfoContainer />
-        <ProgramContainer />
+        <AccommodationContainer />
+        <TransportContainer />
+        <Box sx={{ margin: "2rem 0" }}>
+          <Typography variant="h3" component="h3">
+            Program for dagen
+          </Typography>
+        </Box>
+        <CeremonyContainer />
+        <ReceptionContainer />
+        <DinnerContainer />
+        <WishesContainer />
+        <Footer />
       </ThemeProvider>
     </>
   );

@@ -22,10 +22,10 @@ const FoodForm = (props: Props) => {
   return (
     <>
       <Grid item xs={12}>
-        <FormLabel id="main-course-label">Menyvalg</FormLabel>
+        <FormLabel id="main-course-label">Menyvalg - hovedrett</FormLabel>
       </Grid>
       <Grid item xs={12}>
-        <FormLabel>{values.guest1}</FormLabel>
+        <FormLabel>{values.guest1 || "Gjest 1"}</FormLabel>
         <Field
           component={RadioGroup}
           style={{ alignItems: "center" }}
@@ -39,45 +39,36 @@ const FoodForm = (props: Props) => {
           />
           <FormControlLabel
             control={<StyledRadio />}
-            label={
-              <Typography>
-                Jeg ønsker fisk{" "}
-                <Tooltip title="Hvit fisk med erter, saus og mer">
-                  <HelpOutlineOutlinedIcon fontSize="small" color="disabled" />
-                </Tooltip>
-              </Typography>
-            }
+            label={<Typography>Jeg ønsker fisk</Typography>}
             value="Fisk til hovedret"
           />
         </Field>
       </Grid>
-      <Grid item xs={12}>
-        <FormLabel>{values.guest2}</FormLabel>
-        <Field
-          component={RadioGroup}
-          style={{ alignItems: "center" }}
-          name="mainCourse2"
-          aria-labelledby="main-course-label"
-        >
-          <FormControlLabel
-            control={<StyledRadio />}
-            label="Jeg ønsker kjøtt"
-            value="Kød til hovedret"
-          />
-          <FormControlLabel
-            control={<StyledRadio />}
-            label="Jeg ønsker fisk"
-            value="Fisk til hovedret"
-          />
-        </Field>
-      </Grid>
+      {values.guest2 && (
+        <Grid item xs={12}>
+          <FormLabel>{values.guest2 || "Gjest 2"}</FormLabel>
+          <Field
+            component={RadioGroup}
+            style={{ alignItems: "center" }}
+            name="mainCourse2"
+            aria-labelledby="main-course-label"
+          >
+            <FormControlLabel
+              control={<StyledRadio />}
+              label="Jeg ønsker kjøtt"
+              value="Kød til hovedret"
+            />
+            <FormControlLabel
+              control={<StyledRadio />}
+              label="Jeg ønsker fisk"
+              value="Fisk til hovedret"
+            />
+          </Field>
+        </Grid>
+      )}
       <Grid item xs={12}>
         <FormLabel id="allergies-label">Allergier/spesielle hensyn:</FormLabel>
-        <CssTextField
-          name="allergies1"
-          control={"textarea"}
-          label={values.guest1}
-        />
+        <CssTextField name="allergies1" control={"textarea"} />
       </Grid>
     </>
   );

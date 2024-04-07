@@ -55,15 +55,12 @@ const RSVP = React.forwardRef(({}, ref) => {
 
   const steps = [
     {
-      label: "Info om dere",
       component: () => <InfoForm />,
     },
     {
-      label: "Velg mat",
       component: (values: RSVPFormValues) => <FoodForm values={values} />,
     },
     {
-      label: "Ønsker du å overnatte på hotellet? Fyld gjerne inn under.",
       component: (values: RSVPFormValues) => (
         <AccommodationForm values={values} />
       ),
@@ -72,7 +69,7 @@ const RSVP = React.forwardRef(({}, ref) => {
 
   return (
     <Grid container xs={12} justifyContent="center">
-      <Grid item xs={12} md={3} alignItems="center" justifyContent="center">
+      <Grid item xs={12} md={4} alignItems="center" justifyContent="center">
         <Paper
           component="div" // Add the missing 'component' prop
           id="rsvp"
@@ -90,11 +87,11 @@ const RSVP = React.forwardRef(({}, ref) => {
           <Typography variant="h2" component="h5">
             RSVP
           </Typography>
-          <Typography>{steps[activeStep].label}</Typography>
           <Formik
             initialValues={{
               guest1: "",
               guest2: "",
+              email: "",
               expectation: "",
               allergies1: "",
               allergies2: "",

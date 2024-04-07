@@ -6,7 +6,6 @@ import {
   MenuItem,
   Toolbar,
   styled,
-  useTheme,
 } from "@mui/material";
 import Fade from "@mui/material/Fade";
 import Leaf from "./Leaf";
@@ -36,13 +35,13 @@ const StyledAppBar = () => {
     setAnchorEl(null);
   };
   const pages = [
-    { id: 1, Title: "Home", ref: "home" },
+    { id: 1, Title: "Top", ref: "home" },
     { id: 2, Title: "RSVP", ref: "rsvp" },
     { id: 3, Title: "Info", ref: "info" },
     { id: 4, Title: "Program", ref: "program" },
+    { id: 5, Title: "Gaveønsker", ref: "wishes" },
+    { id: 6, Title: "Kontakt", ref: "contact" },
   ];
-
-  const theme = useTheme();
 
   return (
     <StyledAppBarComponent position="fixed">
@@ -63,7 +62,7 @@ const StyledAppBar = () => {
               smooth={true}
               offset={-100}
               duration={500}
-              style={{ cursor: "pointer" }}
+              style={{ cursor: "pointer", color: "#de9a348f" }}
             >
               {page.Title}
             </Link>
@@ -108,7 +107,7 @@ const StyledAppBar = () => {
                 smooth={true}
                 offset={-100}
                 duration={500}
-                style={{ cursor: "pointer" }}
+                style={{ cursor: "pointer", color: "#121212" }}
                 onClick={handleClose}
               >
                 {page.Title}

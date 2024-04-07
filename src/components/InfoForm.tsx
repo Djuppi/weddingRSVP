@@ -13,6 +13,7 @@ const InfoForm = () => {
           id="guest1"
           label="Gjest 1"
           control="input"
+          required
         />
       </Grid>
       <Grid item xs={12}>
@@ -24,35 +25,39 @@ const InfoForm = () => {
         />
       </Grid>
       <Grid item xs={12}>
+        <CssTextField
+          name="email"
+          id="email"
+          label="E-post"
+          control="input"
+          required
+        />
+      </Grid>
+      <Grid item xs={12}>
         <FormLabel id="demo-radio-buttons-group-label">
-          Kan vi forvente dere?
+          Kan vi forvente deg/dere? *
         </FormLabel>
         <Field
           component={RadioGroup}
           style={{ alignItems: "center" }}
           name="expectation"
           aria-labelledby="demo-radio-buttons-group-label"
+          required
         >
+          <FormControlLabel control={<StyledRadio />} label="Ja" value="yes" />
           <FormControlLabel
             control={<StyledRadio />}
-            label="Ja, vi kommer gjerne!"
-            value="yes"
-          />
-          <FormControlLabel
-            control={<StyledRadio />}
-            label="Nei, vi kan desverre ikke!"
+            label="Nei, dessverre"
             name="expectation"
             value="no"
           />
         </Field>
       </Grid>
       <Grid item xs={12}>
-        <CssTextField
-          name="contribution"
-          control={"input"}
-          label="Ønsker du å bidra med noe (tale/underholdning)?"
-          multiline
-        />
+        <FormLabel htmlFor="allergies1">
+          Legg igjen kommentar dersom du ønsker å bidra med noe til programmet (tale/underholdning).
+        </FormLabel>
+        <CssTextField name="contribution" control={"input"} multiline />
       </Grid>
     </>
   );
