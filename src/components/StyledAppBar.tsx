@@ -107,7 +107,7 @@ const StyledAppBar = () => {
                 smooth={true}
                 offset={-100}
                 duration={500}
-                style={{ cursor: "pointer", color: "#121212" }}
+                style={{ cursor: "pointer", color: "#de9a348f" }}
                 onClick={handleClose}
               >
                 {page.Title}

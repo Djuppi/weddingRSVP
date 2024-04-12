@@ -1,11 +1,12 @@
 async function submitForm(formData: FormData): Promise<void> {
   try {
-    const scriptURL = "https://script.google.com/macros/s/AKfycbxeLNFIQRmWalCBSi8IT0cMEP9VLCEcxz1GMc5--18z3GDkzOi7awmJPPSZUzl5zo2i/exec";
+    const scriptURL =
+      "https://script.google.com/macros/s/AKfycbyJPzqOgCyzbmxzpQMY-iOx3NOae54PlYegsV_Np_Ou20kn13GQVuPEAtNFJpPSj_HE/exec";
 
     await fetch(scriptURL, {
-        method: "POST",
-        body: formData,
-        mode: 'no-cors',
+      method: "POST",
+      body: formData,
+      mode: "no-cors",
     });
 
     console.log("Form submitted successfully!");

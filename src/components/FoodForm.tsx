@@ -2,23 +2,23 @@ import {
   FormControlLabel,
   FormLabel,
   Grid,
-  Tooltip,
   Typography,
 } from "@mui/material";
 import { RadioGroup } from "formik-material-ui";
 import CssTextField from "./StyledTextField";
 import { RSVPFormValues } from "./RSVP";
-import { Field } from "formik";
+import { Field, FormikErrors, FormikTouched } from "formik";
 import StyledRadio from "./StyledRadioButton";
-import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 
 type Props = {
   values: RSVPFormValues;
+  errors: FormikErrors<RSVPFormValues>;
+  touched: FormikTouched<RSVPFormValues>;
 };
 
 const FoodForm = (props: Props) => {
-  const { values } = props;
-  console.log(values);
+  const { values, errors, touched } = props;
+
   return (
     <>
       <Grid item xs={12}>
@@ -43,6 +43,7 @@ const FoodForm = (props: Props) => {
             value="Fisk til hovedret"
           />
         </Field>
+        {errors.mainCourse1 && touched.mainCourse1 && <Typography fontSize="small" color="error">{errors.mainCourse1}</Typography>}
       </Grid>
       {values.guest2 && (
         <Grid item xs={12}>

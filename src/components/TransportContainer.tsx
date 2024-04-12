@@ -1,9 +1,5 @@
 import {
   Link,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
   Typography,
 } from "@mui/material";
 import StyledPicInfoContainer from "./Common/StyledPicInfoContainer";

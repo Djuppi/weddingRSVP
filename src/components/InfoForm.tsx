@@ -1,20 +1,32 @@
-import { FormControlLabel, FormLabel, Grid } from "@mui/material";
+import { FormControlLabel, FormLabel, Grid, Typography } from "@mui/material";
 import { RadioGroup } from "formik-material-ui";
-import { Field } from "formik";
+import { Field, FormikErrors, FormikTouched } from "formik";
 import StyledRadio from "./StyledRadioButton";
 import CssTextField from "./StyledTextField";
+import { RSVPFormValues } from "./RSVP";
+import { FC } from "react";
 
-const InfoForm = () => {
+interface Props {
+  errors: FormikErrors<RSVPFormValues>;
+  touched: FormikTouched<RSVPFormValues>;
+}
+
+const InfoForm: FC<Props> = (props: Props) => {
+  const { errors, touched } = props;
   return (
     <>
       <Grid item xs={12}>
         <CssTextField
           name="guest1"
           id="guest1"
-          label="Gjest 1"
+          label="Gjest 1*"
           control="input"
-          required
         />
+        {errors.guest1 && touched.guest1 && (
+          <Typography fontSize="small" color="error">
+            {errors.guest1}
+          </Typography>
+        )}
       </Grid>
       <Grid item xs={12}>
         <CssTextField
@@ -25,13 +37,12 @@ const InfoForm = () => {
         />
       </Grid>
       <Grid item xs={12}>
-        <CssTextField
-          name="email"
-          id="email"
-          label="E-post"
-          control="input"
-          required
-        />
+        <CssTextField name="email" id="email" label="E-post" control="input" />
+        {errors.email && touched.email && (
+          <Typography fontSize="small" color="error">
+            {errors.email}
+          </Typography>
+        )}
       </Grid>
       <Grid item xs={12}>
         <FormLabel id="demo-radio-buttons-group-label">
@@ -42,7 +53,6 @@ const InfoForm = () => {
           style={{ alignItems: "center" }}
           name="expectation"
           aria-labelledby="demo-radio-buttons-group-label"
-          required
         >
           <FormControlLabel control={<StyledRadio />} label="Ja" value="yes" />
           <FormControlLabel
@@ -52,10 +62,16 @@ const InfoForm = () => {
             value="no"
           />
         </Field>
+        {errors.expectation && touched.expectation && (
+          <Typography fontSize="small" color="error">
+            {errors.expectation}
+          </Typography>
+        )}
       </Grid>
       <Grid item xs={12}>
         <FormLabel htmlFor="allergies1">
-          Legg igjen kommentar dersom du ønsker å bidra med noe til programmet (tale/underholdning).
+          Legg igjen kommentar dersom du ønsker å bidra med noe til programmet
+          (tale/underholdning).
         </FormLabel>
         <CssTextField name="contribution" control={"input"} multiline />
       </Grid>

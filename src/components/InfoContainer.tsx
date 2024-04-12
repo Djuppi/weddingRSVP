@@ -1,4 +1,4 @@
-import { Grid, Link, Typography } from "@mui/material";
+import { Link, Typography } from "@mui/material";
 import { Link as ScrollLink } from "react-scroll";
 import Images from "../Images";
 import StyledPicInfoContainer from "./Common/StyledPicInfoContainer";

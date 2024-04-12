@@ -1,6 +1,6 @@
-import { Button, Grid, Paper, Typography } from "@mui/material";
-import { Form, Formik } from "formik";
-import React, { RefObject, useState } from "react";
+import { Grid, Paper, Typography } from "@mui/material";
+import { Form, Formik, FormikErrors, FormikTouched } from "formik";
+import React, { RefObject, useEffect, useState } from "react";
 import submitForm from "../api/SubmitForm";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -9,24 +9,52 @@ import InfoForm from "./InfoForm";
 import FoodForm from "./FoodForm";
 import AccommodationForm from "./AccommodationForm";
 import CustomMobileStepper from "./StyledMobileStepper";
+import { RSVPValidation } from "../utils/RSVPValidation";
 
 export interface RSVPFormValues {
   guest1: string;
   guest2: string;
   expectation: string;
-  allergies1: string;
-  allergies2: string;
+  email: string;
+  allergies: string;
   contribution: string;
   roomType: "Dobbelrum" | "Enkeltrum" | "Ingen overnatning" | "";
   stayDuration: 0 | 1 | 2;
-  mainCourse: "Kød til hovedret" | "Fisk til hovedret" | "";
+  mainCourse1: "Kød til hovedret" | "Fisk til hovedret" | "";
+  mainCourse2: "Kød til hovedret" | "Fisk til hovedret" | "";
 }
 
 const RSVP = React.forwardRef(({}, ref) => {
   const [activeStep, setActiveStep] = useState(0);
+  const [hasSubmitted, setHasSubmitted] = useState<boolean>(false);
 
-  const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+  const isLastStep = () => {
+    return activeStep === steps.length - 2;
+  };
+
+  const handleNext = (
+    values: RSVPFormValues,
+    setFieldTouched: (field: string, message: string | undefined) => void
+  ) => {
+    if (activeStep === 0) {
+      if (values.guest1 === "") setFieldTouched("guest1", undefined);
+      else if (values.email === "") setFieldTouched("guest1", undefined);
+      else if (values.expectation === "") setFieldTouched("guest1", undefined);
+      else setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    } else if (activeStep === 1) {
+      if (values.mainCourse1 === "") setFieldTouched("guest1", undefined);
+      else if (values.mainCourse2 === "" && values.guest2 !== "")
+        setFieldTouched("guest1", undefined);
+      else setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    } else if (activeStep === 2) {
+      if (values.roomType === "") setFieldTouched("roomType", undefined);
+      else if (
+        values.stayDuration === 0 &&
+        values.roomType !== "Ingen overnatning"
+      )
+        setFieldTouched("stayDuration", undefined);
+      else handleSubmit(values);
+    }
   };
 
   const handleBack = () => {
@@ -34,19 +62,30 @@ const RSVP = React.forwardRef(({}, ref) => {
   };
 
   const handleSubmit = (values: RSVPFormValues) => {
-    console.log(values);
+    if (!isLastStep()) {
+      return;
+    }
     // Create the form data
     const formData = new FormData();
     formData.append("Name1", values.guest1);
     formData.append("Name2", values.guest2);
     formData.append("Attending", values.expectation);
-    formData.append("Allergies1", values.allergies1);
-    formData.append("Allergies2", values.allergies2);
+    formData.append("Allergies", values.allergies);
     formData.append("Contribution", values.contribution);
+    formData.append("Email", values.email);
+    formData.append("RoomType", values.roomType);
+    formData.append("StayDuration", values.stayDuration.toString());
+    formData.append("MainCourse1", values.mainCourse1);
+    formData.append("MainCourse2", values.mainCourse2);
 
     // Call the submitForm API with the form data
     try {
       submitForm(formData);
+      setActiveStep((prevActiveStep) => prevActiveStep + 1);
+      setTimeout(() => {
+        window.localStorage.setItem("rsvp", "yes");
+        setHasSubmitted(true);
+      }, 3000);
       toast.success("Takk for ditt svar :)");
     } catch (error) {
       toast.error("Noe gikk galt, prøv igjen senere");
@@ -55,17 +94,38 @@ const RSVP = React.forwardRef(({}, ref) => {
 
   const steps = [
     {
-      component: () => <InfoForm />,
+      component: (
+        _values: RSVPFormValues,
+        errors: FormikErrors<RSVPFormValues>,
+        touched: FormikTouched<RSVPFormValues>
+      ) => <InfoForm errors={errors} touched={touched} />,
     },
     {
-      component: (values: RSVPFormValues) => <FoodForm values={values} />,
+      component: (
+        values: RSVPFormValues,
+        errors: FormikErrors<RSVPFormValues>,
+        touched: FormikTouched<RSVPFormValues>
+      ) => <FoodForm values={values} errors={errors} touched={touched} />,
     },
     {
-      component: (values: RSVPFormValues) => (
-        <AccommodationForm values={values} />
-      ),
+      component: (
+        values: RSVPFormValues,
+        errors: FormikErrors<RSVPFormValues>,
+        touched: FormikTouched<RSVPFormValues>
+      ) => <AccommodationForm values={values} errors={errors} touched={touched} />,
     },
+    {
+      component: () => <Typography>Thank you for submitting</Typography>,
+    }
   ];
+
+  useEffect(() => {
+    window.localStorage.getItem("rsvp") && setHasSubmitted(true);
+  }, []);
+
+  if(hasSubmitted) {
+    return <></>
+  }
 
   return (
     <Grid container xs={12} justifyContent="center">
@@ -93,16 +153,17 @@ const RSVP = React.forwardRef(({}, ref) => {
               guest2: "",
               email: "",
               expectation: "",
-              allergies1: "",
-              allergies2: "",
+              allergies: "",
               contribution: "",
               roomType: "",
               stayDuration: 0,
-              mainCourse: "",
+              mainCourse1: "",
+              mainCourse2: "",
             }}
             onSubmit={handleSubmit}
+            validationSchema={RSVPValidation}
           >
-            {({ values }) => (
+            {({ values, errors, touched, setFieldError }) => (
               <Form
                 style={{
                   padding: "2rem",
@@ -114,66 +175,18 @@ const RSVP = React.forwardRef(({}, ref) => {
                 }}
               >
                 <Grid container spacing={3}>
-                  {steps[activeStep].component(values)}
+                  {steps[activeStep].component(values, errors, touched)}
                 </Grid>
                 <Grid item xs={12} sx={{ alignItems: "center" }}>
                   <CustomMobileStepper
                     activeStep={activeStep}
                     steps={3}
+                    values={values}
                     handleBack={handleBack}
                     handleNext={handleNext}
+                    setFieldTouched={setFieldError}
                   />
-                  {/* <MobileStepper
-                    variant="dots"
-                    steps={3}
-                    position="static"
-                    activeStep={activeStep}
-                    sx={{
-                      maxWidth: 400,
-                      flexGrow: 1,
-                      color: "#de9a34",
-                      margin: "0 auto",
-                    }}
-                    nextButton={
-                      <Button
-                        size="small"
-                        onClick={handleNext}
-                        disabled={activeStep === 2}
-                      >
-                        Next
-                        {theme.direction === "rtl" ? (
-                          <KeyboardArrowLeft />
-                        ) : (
-                          <KeyboardArrowRight />
-                        )}
-                      </Button>
-                    }
-                    backButton={
-                      <Button
-                        size="small"
-                        onClick={handleBack}
-                        disabled={activeStep === 0}
-                      >
-                        {theme.direction === "rtl" ? (
-                          <KeyboardArrowRight />
-                        ) : (
-                          <KeyboardArrowLeft />
-                        )}
-                        Back
-                      </Button>
-                    }
-                  /> */}
                 </Grid>
-                <Button
-                  variant="contained"
-                  sx={{
-                    backgroundColor: "#de9a348f",
-                    "&:hover": { backgroundColor: "#de9a34" },
-                  }}
-                  type="submit"
-                >
-                  Send
-                </Button>
               </Form>
             )}
           </Formik>

@@ -6,16 +6,18 @@ import {
   Typography,
 } from "@mui/material";
 import { RadioGroup } from "formik-material-ui";
-import { Field } from "formik";
+import { Field, FormikErrors, FormikTouched } from "formik";
 import StyledRadio from "./StyledRadioButton";
 import { RSVPFormValues } from "./RSVP";
 
 type Props = {
   values: RSVPFormValues;
+  errors: FormikErrors<RSVPFormValues>;
+  touched: FormikTouched<RSVPFormValues>;
 };
 
 const AccommodationForm = (props: Props) => {
-  const { values } = props;
+  const { values, errors, touched } = props;
   return (
     <>
       <Grid item xs={12}>
@@ -42,6 +44,11 @@ const AccommodationForm = (props: Props) => {
             value="Ingen overnatning"
           />
         </Field>
+        {errors.roomType && touched.roomType && (
+          <Typography fontSize="small" color="error">
+            {errors.roomType}
+          </Typography>
+        )}
       </Grid>
       {values.roomType !== "Ingen overnatning" && (
         <Grid item xs={12}>
@@ -63,6 +70,11 @@ const AccommodationForm = (props: Props) => {
               value={2}
             />
           </Field>
+          {errors.stayDuration && touched.stayDuration && (
+            <Typography fontSize="small" color="error">
+              {errors.stayDuration}
+            </Typography>
+          )}
         </Grid>
       )}
       <Grid item xs={12}>

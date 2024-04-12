@@ -1,4 +1,4 @@
-import { Grid, Link, List, ListItem, Typography } from "@mui/material";
+import { Link, List, ListItem, Typography } from "@mui/material";
 import Images from "../Images";
 import StyledPicInfoContainer from "./Common/StyledPicInfoContainer";
 
