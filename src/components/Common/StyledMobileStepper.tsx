@@ -1,7 +1,6 @@
 import {
   Button,
   MobileStepper,
-  ThemeProvider,
   styled,
   useTheme,
 } from "@mui/material";
@@ -10,7 +9,7 @@ import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import { RSVPFormValues } from "../RSVP";
 import { FormikErrors } from "formik";
 
-const StyledMobileStepper = styled(MobileStepper)<{ theme: any }>((theme) => ({
+const StyledMobileStepper = styled(MobileStepper)<{ theme: any }>(() => ({
   "& .MuiMobileStepper-dot": {
     "&Active": {
       backgroundColor: "#de9a348f",

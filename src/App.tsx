@@ -22,7 +22,6 @@ import TransportContainer from "@components/TransportContainer";
 import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/opacity.css";
-import { useEffect, useState } from "react";
 
 const lightTheme = createTheme({
   palette: {
@@ -32,15 +31,10 @@ const lightTheme = createTheme({
 
 
 function App() {
-  const [hasSubmitted, setHasSubmitted] = useState<boolean>(false);
 
   const theme = useTheme();
   const isMediumScreen = useMediaQuery(theme.breakpoints.down("md"));
   const isLargeScreen = useMediaQuery(theme.breakpoints.down("lg"));
-
-  useEffect(() => {
-    window.localStorage.getItem("rsvp") && setHasSubmitted(true);
-  }, []);
   
   return (
     <>
