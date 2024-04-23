@@ -15,7 +15,11 @@ const ReceptionContainer = () => (
     image={Images.reception}
     id="program"
   >
-    <Typography variant="h4" component="h2" sx={{ marginBottom: "2rem" }}>
+    <Typography
+      variant="h4"
+      component="h2"
+      sx={{ marginBottom: { sm: "1rem", md: "2rem" } }}
+    >
       Mottakelse/Reception
     </Typography>
     <Typography fontSize="small" fontStyle="italic">
@@ -23,16 +27,22 @@ const ReceptionContainer = () => (
     </Typography>
     <List>
       <ListItem>
-        <ListItemIcon>🥂</ListItemIcon>
-        <ListItemText primary="15:00 Mottakelse/reception på takterrassen" />
+        <ListItemIcon>
+          <img src={Images.cheers} width={20} color="grey" />
+        </ListItemIcon>
+        <ListItemText primary="15:00 - Oppmøte på takterrassen" />
       </ListItem>
       <ListItem>
-        <ListItemIcon>🍽️</ListItemIcon>
-        <ListItemText primary="15:30 Brudeparet ankommer" />
+        <ListItemIcon>
+          <img src={Images.meetUp} width={20} />
+        </ListItemIcon>
+        <ListItemText primary="15:30 - Brudeparet ankommer" />
       </ListItem>
       <ListItem>
-        <ListItemIcon>🎂</ListItemIcon>
-        <ListItemText primary="20:00 - Kake og dessert" />
+        <ListItemIcon>
+          <img src={Images.table} width={20} />
+        </ListItemIcon>
+        <ListItemText primary="17:30 - Bordsetting" />
       </ListItem>
     </List>
   </StyledPicInfoContainer>

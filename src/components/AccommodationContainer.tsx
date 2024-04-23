@@ -1,4 +1,4 @@
-import { Link, List, ListItem, Typography } from "@mui/material";
+import { List, ListItem, Typography } from "@mui/material";
 import Images from "../Images";
 import StyledPicInfoContainer from "./Common/StyledPicInfoContainer";
 
@@ -10,7 +10,7 @@ const AccommodationContainer = () => {
       image={Images.accommodation}
       id="accommodation"
     >
-      <Typography variant="h4" component="h2" sx={{ marginBottom: "2rem" }}>
+      <Typography variant="h4" component="h2" sx={{ marginBottom: {sm: "1rem", md: "2rem"} }}>
         Overnatting:
       </Typography>
       <Typography>
@@ -26,15 +26,7 @@ const AccommodationContainer = () => {
         </ListItem>
       </List>
       <Typography>
-        Ta kontakt med oss på{" "}
-        <Link
-          sx={{ color: "#063300a2", textDecoration: "none" }}
-          href="mailto:askeogsus@gmail.com"
-        >
-          mail
-        </Link>{" "}
-        for å booke rom (dersom du ikke allerede har gitt beskjed om dette i
-        svarskjemaet).{" "}
+      Dersom du/dere ønsker å overnatte på Skodsborg kan dette fylles inn via RSVP skjema. Vi står for å sende dette videre til hotellet
       </Typography>
     </StyledPicInfoContainer>
   );

@@ -1,7 +1,9 @@
 import * as yup from "yup";
 
 export const RSVPValidation = yup.object().shape({
-  guest1: yup.string().required("Vi må vite hva du heter"),
+  guest1: yup.string().required("Vi må vite hva du heter").test('two-words', 'Vi trenger ditt fulle navn', (value) => {
+    return value.split(' ').length > 1;
+  }),
   email: yup
     .string()
     .email("Ugyldig e-post")

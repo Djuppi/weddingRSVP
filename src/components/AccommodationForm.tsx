@@ -7,7 +7,7 @@ import {
 } from "@mui/material";
 import { RadioGroup } from "formik-material-ui";
 import { Field, FormikErrors, FormikTouched } from "formik";
-import StyledRadio from "./StyledRadioButton";
+import StyledRadio from "./Common/StyledRadioButton";
 import { RSVPFormValues } from "./RSVP";
 
 type Props = {
@@ -31,12 +31,12 @@ const AccommodationForm = (props: Props) => {
           <FormControlLabel
             control={<StyledRadio />}
             label="Dobbeltrom (1.700 DKK per natt)"
-            value="Dobbelrum"
+            value="Dobbelværelse"
           />
           <FormControlLabel
             control={<StyledRadio />}
             label="Enkeltrom (1.400 DKK per natt)"
-            value="Enkeltrum"
+            value="Enkeltværelse"
           />
           <FormControlLabel
             control={<StyledRadio />}
@@ -62,12 +62,12 @@ const AccommodationForm = (props: Props) => {
             <FormControlLabel
               control={<StyledRadio />}
               label="1 natt (lørdag-søndag)"
-              value={1}
+              value="1 nat"
             />
             <FormControlLabel
               control={<StyledRadio />}
               label="2 netter (fredag-søndag)"
-              value={2}
+              value="2 nætter"
             />
           </Field>
           {errors.stayDuration && touched.stayDuration && (

@@ -1,8 +1,8 @@
 import { FormControlLabel, FormLabel, Grid, Typography } from "@mui/material";
 import { RadioGroup } from "formik-material-ui";
 import { Field, FormikErrors, FormikTouched } from "formik";
-import StyledRadio from "./StyledRadioButton";
-import CssTextField from "./StyledTextField";
+import StyledRadio from "./Common/StyledRadioButton";
+import CssTextField from "./Common/StyledTextField";
 import { RSVPFormValues } from "./RSVP";
 import { FC } from "react";
 
@@ -22,7 +22,7 @@ const InfoForm: FC<Props> = (props: Props) => {
           label="Gjest 1*"
           control="input"
         />
-        {errors.guest1 && touched.guest1 && (
+        {errors.guest1 && (
           <Typography fontSize="small" color="error">
             {errors.guest1}
           </Typography>
@@ -54,12 +54,12 @@ const InfoForm: FC<Props> = (props: Props) => {
           name="expectation"
           aria-labelledby="demo-radio-buttons-group-label"
         >
-          <FormControlLabel control={<StyledRadio />} label="Ja" value="yes" />
+          <FormControlLabel control={<StyledRadio />} label="Ja" value="ja" />
           <FormControlLabel
             control={<StyledRadio />}
             label="Nei, dessverre"
             name="expectation"
-            value="no"
+            value="nej"
           />
         </Field>
         {errors.expectation && touched.expectation && (

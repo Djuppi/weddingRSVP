@@ -9,10 +9,10 @@ const TransportContainer = () => (
   <StyledPicInfoContainer
     orderImageDesktop={2}
     orderInfoDesktop={1}
-    image={Images.reception}
+    image={Images.transport}
     id={"arriving"}
   >
-    <Typography variant="h4" component="h2" sx={{ marginBottom: "2rem" }}>
+    <Typography variant="h4" component="h2" sx={{ marginBottom: {sm: "1rem", md: "2rem"} }}>
       Adkomst
     </Typography>
     <Typography variant="h5" component="h3">

@@ -1,15 +1,22 @@
-import { Grid, Paper, Typography } from "@mui/material";
+import {
+  Grid,
+  Paper,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import { Form, Formik, FormikErrors, FormikTouched } from "formik";
 import React, { RefObject, useEffect, useState } from "react";
 import submitForm from "../api/SubmitForm";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 import InfoForm from "./InfoForm";
 import FoodForm from "./FoodForm";
 import AccommodationForm from "./AccommodationForm";
-import CustomMobileStepper from "./StyledMobileStepper";
+import CustomMobileStepper from "./Common/StyledMobileStepper";
 import { RSVPValidation } from "../utils/RSVPValidation";
+import IMAGES from "../Images";
+import SubmittedForm from "./SubmittedForm";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 export interface RSVPFormValues {
   guest1: string;
@@ -19,7 +26,7 @@ export interface RSVPFormValues {
   allergies: string;
   contribution: string;
   roomType: "Dobbelrum" | "Enkeltrum" | "Ingen overnatning" | "";
-  stayDuration: 0 | 1 | 2;
+  stayDuration: "1 nat" | "2 nætter" | "";
   mainCourse1: "Kød til hovedret" | "Fisk til hovedret" | "";
   mainCourse2: "Kød til hovedret" | "Fisk til hovedret" | "";
 }
@@ -27,6 +34,9 @@ export interface RSVPFormValues {
 const RSVP = React.forwardRef(({}, ref) => {
   const [activeStep, setActiveStep] = useState(0);
   const [hasSubmitted, setHasSubmitted] = useState<boolean>(false);
+  const theme = useTheme();
+
+  const isMediumScreen = useMediaQuery(theme.breakpoints.down("md"));
 
   const isLastStep = () => {
     return activeStep === steps.length - 2;
@@ -34,7 +44,11 @@ const RSVP = React.forwardRef(({}, ref) => {
 
   const handleNext = (
     values: RSVPFormValues,
-    setFieldTouched: (field: string, message: string | undefined) => void
+    setFieldTouched: (
+      field: string,
+      isTouched?: boolean | undefined,
+      shouldValidate?: boolean | undefined
+    ) => Promise<void | FormikErrors<RSVPFormValues>>
   ) => {
     if (activeStep === 0) {
       if (values.guest1 === "") setFieldTouched("guest1", undefined);
@@ -49,7 +63,7 @@ const RSVP = React.forwardRef(({}, ref) => {
     } else if (activeStep === 2) {
       if (values.roomType === "") setFieldTouched("roomType", undefined);
       else if (
-        values.stayDuration === 0 &&
+        values.stayDuration == "" &&
         values.roomType !== "Ingen overnatning"
       )
         setFieldTouched("stayDuration", undefined);
@@ -86,9 +100,8 @@ const RSVP = React.forwardRef(({}, ref) => {
         window.localStorage.setItem("rsvp", "yes");
         setHasSubmitted(true);
       }, 3000);
-      toast.success("Takk for ditt svar :)");
     } catch (error) {
-      toast.error("Noe gikk galt, prøv igjen senere");
+      console.error("Error submitting form", error);
     }
   };
 
@@ -112,24 +125,33 @@ const RSVP = React.forwardRef(({}, ref) => {
         values: RSVPFormValues,
         errors: FormikErrors<RSVPFormValues>,
         touched: FormikTouched<RSVPFormValues>
-      ) => <AccommodationForm values={values} errors={errors} touched={touched} />,
+      ) => (
+        <AccommodationForm values={values} errors={errors} touched={touched} />
+      ),
     },
     {
-      component: () => <Typography>Thank you for submitting</Typography>,
-    }
+      component: () => <SubmittedForm />,
+    },
   ];
 
   useEffect(() => {
     window.localStorage.getItem("rsvp") && setHasSubmitted(true);
   }, []);
 
-  if(hasSubmitted) {
-    return <></>
+  if (hasSubmitted) {
+    return <></>;
   }
 
   return (
     <Grid container xs={12} justifyContent="center">
-      <Grid item xs={12} md={4} alignItems="center" justifyContent="center">
+      <Grid
+        item
+        xs={12}
+        md={6}
+        lg={4}
+        alignItems="center"
+        justifyContent="center"
+      >
         <Paper
           component="div" // Add the missing 'component' prop
           id="rsvp"
@@ -142,11 +164,26 @@ const RSVP = React.forwardRef(({}, ref) => {
             alignItems: "center",
             alignSelf: "center",
             flexDirection: "column",
+            position: "relative",
           }}
         >
-          <Typography variant="h2" component="h5">
-            RSVP
-          </Typography>
+          <LazyLoadImage
+            src={IMAGES.eucalyptusLittle}
+            alt="bride and groom"
+            width={isMediumScreen ? 100 : 180}
+            style={{
+              position: "absolute",
+              top: "-5px",
+              right: "-30px",
+              transform: "rotate(200deg)",
+              filter: "opacity(0.6)",
+            }}
+          />
+          {!isLastStep() && (
+            <Typography variant="h2" component="h5">
+              RSVP
+            </Typography>
+          )}
           <Formik
             initialValues={{
               guest1: "",
@@ -156,14 +193,14 @@ const RSVP = React.forwardRef(({}, ref) => {
               allergies: "",
               contribution: "",
               roomType: "",
-              stayDuration: 0,
+              stayDuration: "",
               mainCourse1: "",
               mainCourse2: "",
             }}
             onSubmit={handleSubmit}
             validationSchema={RSVPValidation}
           >
-            {({ values, errors, touched, setFieldError }) => (
+            {({ values, errors, touched, setFieldTouched }) => (
               <Form
                 style={{
                   padding: "2rem",
@@ -184,7 +221,7 @@ const RSVP = React.forwardRef(({}, ref) => {
                     values={values}
                     handleBack={handleBack}
                     handleNext={handleNext}
-                    setFieldTouched={setFieldError}
+                    setFieldTouched={setFieldTouched}
                   />
                 </Grid>
               </Form>

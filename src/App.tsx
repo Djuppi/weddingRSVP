@@ -1,5 +1,5 @@
 import "./App.css";
-import StyledAppBar from "@components/StyledAppBar";
+import StyledAppBar from "@components/Common/StyledAppBar";
 import {
   Box,
   Divider,
@@ -12,7 +12,6 @@ import {
 import RSVP from "@components/RSVP";
 import InfoContainer from "@components/InfoContainer";
 import CeremonyContainer from "@components/CeremonyContainer";
-import { styled } from "@mui/system";
 import IMAGES from "./Images";
 import Footer from "@components/Footer";
 import AccommodationContainer from "@components/AccommodationContainer";
@@ -20,10 +19,10 @@ import ReceptionContainer from "@components/ReceptionContainer";
 import DinnerContainer from "@components/DinnerContainer";
 import WishesContainer from "@components/WishesContainer";
 import TransportContainer from "@components/TransportContainer";
-
-const CalligraphyText = styled(Typography)`
-  font-family: "CalligraphyFont", cursive;
-`;
+import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/opacity.css";
+import { useEffect, useState } from "react";
 
 const lightTheme = createTheme({
   palette: {
@@ -31,18 +30,25 @@ const lightTheme = createTheme({
   },
 });
 
+
 function App() {
+  const [hasSubmitted, setHasSubmitted] = useState<boolean>(false);
+
   const theme = useTheme();
   const isMediumScreen = useMediaQuery(theme.breakpoints.down("md"));
   const isLargeScreen = useMediaQuery(theme.breakpoints.down("lg"));
 
+  useEffect(() => {
+    window.localStorage.getItem("rsvp") && setHasSubmitted(true);
+  }, []);
+  
   return (
     <>
       <ThemeProvider theme={lightTheme}>
         <StyledAppBar />
         <Box
           sx={{
-            margin: "7rem 0 5rem 0",
+            margin: "10rem 0 5rem 0",
             display: "flex",
             flexDirection: "column",
             gap: "2rem",
@@ -50,9 +56,21 @@ function App() {
           }}
           id="home"
         >
-          <img
+          <LazyLoadImage
+            src={IMAGES.eucalyptus}
+            alt="eucaluptus"
+            effect="opacity"
+            width={isLargeScreen ? 120 : 300}
+            style={{
+              position: "absolute",
+              left: isMediumScreen ? "5px" : "70px",
+              top: isMediumScreen ? "70px" : "130px",
+            }}
+          />
+          <LazyLoadImage
             src={IMAGES.portrait}
             alt="bride and groom"
+            effect="opacity"
             width={isLargeScreen ? 120 : 300}
             style={{
               position: "absolute",
@@ -61,15 +79,13 @@ function App() {
             }}
           />
 
-          <CalligraphyText
-            sx={{ fontWeight: "500" }}
-            variant="h6"
+          <Typography
+            sx={{ fontWeight: "500"}}
+            variant="h4"
             color="black"
+            className="calligraphy-font"
           >
             Susanne & Aske
-          </CalligraphyText>
-          <Typography variant="h1" component="h1" className="header">
-            Vi gifter oss
           </Typography>
           <Divider
             variant="middle"
@@ -82,7 +98,7 @@ function App() {
               margin: "5px 0",
             }}
           />
-          <Typography variant="h4" component="h2" color="grey">
+          <Typography variant="h4" color="grey" className="calligraphy-font">
             10. August 2024
           </Typography>
           <Box sx={{ alignSelf: "center", width: "60%" }}>
@@ -93,7 +109,7 @@ function App() {
               Her vil vi oppdatere med alle detaljer om dagen, samt praktisk
               informasjon fortløpende. Vi setter stor pris på om dere i første
               omgang vil fylle ut RSVP skjemaet, og svare på vår invitasjon så
-              snart som mulig ❤
+              snart som mulig <FavoriteOutlinedIcon fontSize="inherit" />
             </Typography>
           </Box>
         </Box>
@@ -101,11 +117,6 @@ function App() {
         <InfoContainer />
         <AccommodationContainer />
         <TransportContainer />
-        <Box sx={{ margin: "2rem 0" }}>
-          <Typography variant="h3" component="h3">
-            Program for dagen
-          </Typography>
-        </Box>
         <CeremonyContainer />
         <ReceptionContainer />
         <DinnerContainer />

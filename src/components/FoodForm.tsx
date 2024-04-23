@@ -1,14 +1,9 @@
-import {
-  FormControlLabel,
-  FormLabel,
-  Grid,
-  Typography,
-} from "@mui/material";
+import { FormControlLabel, FormLabel, Grid, Typography } from "@mui/material";
 import { RadioGroup } from "formik-material-ui";
-import CssTextField from "./StyledTextField";
+import CssTextField from "./Common/StyledTextField";
 import { RSVPFormValues } from "./RSVP";
 import { Field, FormikErrors, FormikTouched } from "formik";
-import StyledRadio from "./StyledRadioButton";
+import StyledRadio from "./Common/StyledRadioButton";
 
 type Props = {
   values: RSVPFormValues;
@@ -43,7 +38,11 @@ const FoodForm = (props: Props) => {
             value="Fisk til hovedret"
           />
         </Field>
-        {errors.mainCourse1 && touched.mainCourse1 && <Typography fontSize="small" color="error">{errors.mainCourse1}</Typography>}
+        {errors.mainCourse1 && touched.mainCourse1 && (
+          <Typography fontSize="small" color="error">
+            {errors.mainCourse1}
+          </Typography>
+        )}
       </Grid>
       {values.guest2 && (
         <Grid item xs={12}>
@@ -69,7 +68,7 @@ const FoodForm = (props: Props) => {
       )}
       <Grid item xs={12}>
         <FormLabel id="allergies-label">Allergier/spesielle hensyn:</FormLabel>
-        <CssTextField name="allergies1" control={"textarea"} />
+        <CssTextField name="allergies" control={"textarea"} />
       </Grid>
     </>
   );

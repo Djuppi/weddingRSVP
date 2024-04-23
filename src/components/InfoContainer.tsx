@@ -11,7 +11,11 @@ const InfoContainer = () => {
       image={Images.skodsborg}
       id="info"
     >
-      <Typography variant="h4" component="h2" sx={{ marginBottom: "2rem" }}>
+      <Typography
+        variant="h4"
+        component="h2"
+        sx={{ marginBottom: { sm: "1rem", md: "2rem" } }}
+      >
         Hotell
       </Typography>
       <Typography>
@@ -39,7 +43,7 @@ const InfoContainer = () => {
         smooth={true}
         offset={-100}
         duration={500}
-        style={{ cursor: "pointer", color: "#063300a2" }}
+        style={{ cursor: "pointer", color: "#063300a2", fontWeight: "400" }}
       >
         Klikk her for mer info
       </ScrollLink>

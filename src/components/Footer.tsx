@@ -11,10 +11,11 @@ const Footer: FC = () => {
         padding: "2rem",
         backgroundColor: "#6f7863",
         color: "white",
+        gap: "1rem",
       }}
       id="contact"
     >
-      <Box>
+      <Box sx={{ display: "flex", flexDirection: "column", gap: ".5rem" }}>
         <Typography variant="h5" component="h3">
           Kontakt
         </Typography>
@@ -28,9 +29,21 @@ const Footer: FC = () => {
           askeogsus@gmail.com
         </Link>
       </Box>
-      <Box sx={{ display: "flex", justifyContent: "end" }}>
+      <Box
+        sx={{
+          display: "flex",
+          alignSelf: { sm: "center", md: "end" },
+          flexDirection: { sm: "column", md: "column" },
+        }}
+      >
         <Typography fontSize="small">
-          &copy; {new Date().getFullYear()} Djuppi. All rights reserved.
+          &copy; {new Date().getFullYear()} <a href="https://github.com/Djuppi" target="_blank" rel="noopener noreferrer">Djuppi.</a> All rights reserved.
+        </Typography>
+        <Typography fontSize={8}>
+          Uicons by <a href="https://www.flaticon.com/uicons">Flaticon</a>
+        </Typography>
+        <Typography fontSize={8}>
+          Photos is from <a href="https://www.Skodsborg.dk">Skodsborg.dk</a>
         </Typography>
       </Box>
     </footer>

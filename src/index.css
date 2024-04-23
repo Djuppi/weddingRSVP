@@ -1,5 +1,6 @@
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont;
   line-height: 1.5;
   font-weight: 400;
 
@@ -26,6 +27,12 @@ a {
 a:hover {
   color: #031d00a2;
   text-decoration: underline;
+}
+
+.calligraphy-font {
+  font-family: "Kaushan", cursive !important;
+  font-weight: 400;
+  font-style: normal;
 }
 
 body {

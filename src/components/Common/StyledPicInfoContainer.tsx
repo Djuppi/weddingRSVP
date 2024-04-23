@@ -1,5 +1,7 @@
 import { Grid } from "@mui/material";
 import { FC } from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/opacity.css";
 
 interface Props {
   children: React.ReactNode;
@@ -14,7 +16,7 @@ const StyledPicInfoContainer: FC<Props> = ({
   orderImageDesktop,
   orderInfoDesktop,
   image,
-  id
+  id,
 }) => (
   <Grid
     container
@@ -24,11 +26,13 @@ const StyledPicInfoContainer: FC<Props> = ({
     id={id}
   >
     <Grid item xs={12} sm={6} order={{ xs: 2, sm: orderImageDesktop }}>
-      <img
+      <LazyLoadImage
         src={image}
         alt="hotel"
         width="100%"
         height="100%"
+        effect="opacity"
+        threshold={100}
         style={{ filter: "opacity(.5)" }}
       />
     </Grid>
