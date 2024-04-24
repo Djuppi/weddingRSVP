@@ -25,37 +25,37 @@ const DinnerContainer = () => (
     <List>
       <ListItem>
         <ListItemIcon>
-          <img src={Images.dinner} width={20} />
+          <img src={Images.dinner} width={20} alt="menu" />
         </ListItemIcon>
         <ListItemText primary="18:00 - Middag" />
       </ListItem>
       <ListItem>
         <ListItemIcon>
-          <img src={Images.dj} width={20} />
+          <img src={Images.dj} width={20} alt="disk" />
         </ListItemIcon>
         <ListItemText primary="20:00 - DJ/underholdning" />
       </ListItem>
       <ListItem>
         <ListItemIcon>
-          <img src={Images.cake} width={20} />
+          <img src={Images.cake} width={20} alt="cake" />
         </ListItemIcon>
         <ListItemText primary="20:30 - Bryllupskake og petit fours med avec" />
       </ListItem>
       <ListItem>
         <ListItemIcon>
-          <img src={Images.discoBall} width={20} />
+          <img src={Images.discoBall} width={20} alt="disco ball" />
         </ListItemIcon>
         <ListItemText primary="21:00 - Bar og dansegulv åpner" />
       </ListItem>
       <ListItem>
         <ListItemIcon>
-          <img src={Images.nightFood} width={20} />
+          <img src={Images.nightFood} width={20} alt="food bowl" />
         </ListItemIcon>
         <ListItemText primary="01:00 - Baren stenger og nattmat serveres" />
       </ListItem>
       <ListItem>
         <ListItemIcon>
-          <img src={Images.moon} width={20} />
+          <img src={Images.moon} width={20} alt="moon" />
         </ListItemIcon>
         <ListItemText primary="02:00 - Festen er slutt" />
       </ListItem>

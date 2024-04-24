@@ -13,7 +13,7 @@ const SubmittedForm = () => {
         width: "100%",
       }}
     >
-      <img src={Images.arch} width={200} />
+      <img src={Images.arch} width={200} alt="wedding arch" />
       <Typography>Takk for ditt svar!</Typography>
     </Box>
   );

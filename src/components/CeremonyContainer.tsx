@@ -26,19 +26,19 @@ const CeremonyContainer = () => {
       <List>
         <ListItem>
           <ListItemIcon>
-            <img src={Images.meetUp} width={20} />
+            <img src={Images.meetUp} width={20} alt="Brides couple" />
           </ListItemIcon>
           <ListItemText primary="13:00 - Oppmøte" />
         </ListItem>
         <ListItem>
           <ListItemIcon>
-            <img src={Images.rings} width={20} />
+            <img src={Images.rings} width={20} alt="Wedding rings" />
           </ListItemIcon>
           <ListItemText primary="13:30 - Vielse" />
         </ListItem>
         <ListItem>
           <ListItemIcon>
-            <img src={Images.camera} width={20} />
+            <img src={Images.camera} width={20} alt="camera" />
           </ListItemIcon>
           <ListItemText primary="14:15 - Gruppebilder/brudeparet tar bilder" />
         </ListItem>

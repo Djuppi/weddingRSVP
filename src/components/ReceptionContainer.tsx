@@ -28,19 +28,19 @@ const ReceptionContainer = () => (
     <List>
       <ListItem>
         <ListItemIcon>
-          <img src={Images.cheers} width={20} color="grey" />
+          <img src={Images.cheers} width={20} alt="champagne glasses" />
         </ListItemIcon>
         <ListItemText primary="15:00 - Oppmøte på takterrassen" />
       </ListItem>
       <ListItem>
         <ListItemIcon>
-          <img src={Images.meetUp} width={20} />
+          <img src={Images.meetUp} width={20} alt="Bride and groom" />
         </ListItemIcon>
         <ListItemText primary="15:30 - Brudeparet ankommer" />
       </ListItem>
       <ListItem>
         <ListItemIcon>
-          <img src={Images.table} width={20} />
+          <img src={Images.table} width={20} alt="dinner table" />
         </ListItemIcon>
         <ListItemText primary="17:30 - Bordsetting" />
       </ListItem>
