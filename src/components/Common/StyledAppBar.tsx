@@ -83,7 +83,7 @@ const StyledAppBar = () => {
           aria-label="menu"
           onClick={handleClick}
           sx={{
-            mr: 2,
+            mr: 2rem,
             justifyContent: "center",
             display: { xs: "flex", md: "none" },
             "&:focus": {
