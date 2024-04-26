@@ -23,6 +23,7 @@ const StyledAppBarComponent = styled(AppBar)`
   border: 1px solid rgba(255, 255, 255, 0.18);
   color: #121212; /* You can change the text color */
   box-shadow: none;
+  width: 100vw;
 `;
 
 const StyledAppBar = () => {

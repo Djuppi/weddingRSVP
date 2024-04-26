@@ -170,11 +170,11 @@ const RSVP = React.forwardRef(({}, ref) => {
           <LazyLoadImage
             src={IMAGES.eucalyptusLittle}
             alt="bride and groom"
-            width={isMediumScreen ? 100 : 180}
+            width={70}
             style={{
               position: "absolute",
-              top: "-5px",
-              right: "-30px",
+              top: "20px",
+              right: "30px",
               transform: "rotate(200deg)",
               filter: "opacity(0.6)",
             }}

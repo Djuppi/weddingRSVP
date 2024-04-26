@@ -1,5 +1,5 @@
 const IMAGES = {
-  portrait: new URL("./assets/portrait.jpeg", import.meta.url).href,
+  portrait: new URL("./assets/portrait.WebP", import.meta.url).href,
   skodsborg: new URL("./assets/Skodsborg1.jpg", import.meta.url).href,
   transport: new URL("./assets/Skodsborg3.jpg", import.meta.url).href,
   accommodation: new URL("./assets/accommodation.jpeg", import.meta.url).href,
@@ -7,7 +7,7 @@ const IMAGES = {
   reception: new URL("./assets/Skodsborg2.jpg", import.meta.url).href,
   weddingDinner: new URL("./assets/VillaRex.jpg", import.meta.url).href,
   eucalyptus: new URL("./assets/eucalyptus.jpeg", import.meta.url).href,
-  eucalyptusLittle: new URL("./assets/eucalyptus-little.jpeg", import.meta.url).href,
+  eucalyptusLittle: new URL("./assets/eucalyptus-little.png", import.meta.url).href,
   meetUp: new URL("./assets/wedding-couple.png", import.meta.url).href,
   rings: new URL("./assets/rings.png", import.meta.url).href,
   camera: new URL("./assets/photo-camera.png", import.meta.url).href,
