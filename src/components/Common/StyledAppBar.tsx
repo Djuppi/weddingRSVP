@@ -11,7 +11,7 @@ import Fade from "@mui/material/Fade";
 import { Link } from "react-scroll";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 
 const StyledAppBarComponent = styled(AppBar)`
@@ -28,17 +28,12 @@ const StyledAppBarComponent = styled(AppBar)`
 
 const StyledAppBar = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const [hasSubmitted, setHasSubmitted] = useState<boolean>(false);
 
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
     setAnchorEl(event.currentTarget);
   };
-
-  useEffect(() => {
-    window.localStorage.getItem("rsvp") && setHasSubmitted(true);
-  }, []);
 
   const handleClose = () => {
     setAnchorEl(null);
@@ -63,7 +58,7 @@ const StyledAppBar = () => {
             gap: "3rem",
           }}
         >
-          {pages.map((page, key) => (hasSubmitted && page.id !== 2) && (
+          {pages.map((page, key) => (
             <Link
               to={page.ref}
               key={key}
@@ -84,7 +79,7 @@ const StyledAppBar = () => {
           aria-label="menu"
           onClick={handleClick}
           sx={{
-            mr: 2rem,
+            mr: 2,
             justifyContent: "center",
             display: { xs: "flex", md: "none" },
             "&:focus": {
@@ -108,7 +103,7 @@ const StyledAppBar = () => {
           disableScrollLock={true}
           TransitionComponent={Fade}
         >
-          {pages.map((page, key) => (hasSubmitted && page.id !== 2) && (
+          {pages.map((page, key) => (
             <MenuItem key={key}>
               <Link
                 to={page.ref}

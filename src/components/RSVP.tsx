@@ -2,8 +2,6 @@ import {
   Grid,
   Paper,
   Typography,
-  useMediaQuery,
-  useTheme,
 } from "@mui/material";
 import { Form, Formik, FormikErrors, FormikTouched } from "formik";
 import React, { RefObject, useEffect, useState } from "react";
@@ -34,9 +32,6 @@ export interface RSVPFormValues {
 const RSVP = React.forwardRef(({}, ref) => {
   const [activeStep, setActiveStep] = useState(0);
   const [hasSubmitted, setHasSubmitted] = useState<boolean>(false);
-  const theme = useTheme();
-
-  const isMediumScreen = useMediaQuery(theme.breakpoints.down("md"));
 
   const isLastStep = () => {
     return activeStep === steps.length - 2;
