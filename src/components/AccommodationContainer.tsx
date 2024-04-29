@@ -26,7 +26,7 @@ const AccommodationContainer = () => {
         </ListItem>
       </List>
       <Typography>
-      Dersom du/dere ønsker å overnatte på Skodsborg kan dette fylles inn via RSVP skjema. Vi står for å sende dette videre til hotellet
+      Dersom du/dere ønsker å overnatte på Skodsborg kan dette fylles inn via RSVP skjema.
       </Typography>
     </StyledPicInfoContainer>
   );

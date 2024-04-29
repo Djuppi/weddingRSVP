@@ -44,8 +44,8 @@ const CeremonyContainer = () => {
         </ListItem>
       </List>
       <Typography fontSize={"small"} fontStyle={"italic"}>
-        Vi ber om at telefoner blir i lommen under vielsen. Der vil bli mulighet
-        for å ta bilder av oss etter vielsen.
+        Vi ber om at telefoner blir i lommen under vielsen. Det blir mulighet for å ta bilder i etterkant.
+    
       </Typography>
     </StyledPicInfoContainer>
   );

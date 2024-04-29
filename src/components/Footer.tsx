@@ -33,17 +33,37 @@ const Footer: FC = () => {
         sx={{
           display: "flex",
           alignSelf: { sm: "center", md: "end" },
-          flexDirection: { sm: "column", md: "column" },
+          flexDirection: "column",
+          marginTop: "1rem",
         }}
       >
         <Typography fontSize="small">
-          &copy; {new Date().getFullYear()} <a href="https://github.com/Djuppi" target="_blank" rel="noopener noreferrer">Djuppi.</a> All rights reserved.
+          &copy; {new Date().getFullYear()}{" "}
+          <a
+            href="https://github.com/Djuppi"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: "white" }}
+          >
+            Djuppi.
+          </a>{" "}
+          All rights reserved.
         </Typography>
         <Typography fontSize={8}>
-          Uicons by <a href="https://www.flaticon.com/uicons">Flaticon</a>
+          Uicons by{" "}
+          <a
+            style={{ color: "white" }}
+            color="white"
+            href="https://www.flaticon.com/uicons"
+          >
+            Flaticon
+          </a>
         </Typography>
         <Typography fontSize={8}>
-          Photos is from <a href="https://www.Skodsborg.dk">Skodsborg.dk</a>
+          Photos from{" "}
+          <a style={{ color: "white" }} href="https://www.Skodsborg.dk">
+            Skodsborg.dk
+          </a>
         </Typography>
       </Box>
     </footer>

@@ -33,7 +33,7 @@ const StyledPicInfoContainer: FC<Props> = ({
         height="100%"
         effect="opacity"
         threshold={100}
-        style={{ filter: "opacity(.5)" }}
+        style={{ filter: "opacity(.6)" }}
       />
     </Grid>
     <Grid
