@@ -24,7 +24,7 @@ export interface RSVPFormValues {
   allergies: string;
   contribution: string;
   roomType: "Dobbelrum" | "Enkeltrum" | "Ingen overnatning" | "";
-  stayDuration: "1 nat" | "2 nætter" | "";
+  stayDuration: "1 nat (lør-søn)" | "2 nætter (fre-søn)" | "";
   mainCourse1: "Kød til hovedret" | "Fisk til hovedret" | "";
   mainCourse2: "Kød til hovedret" | "Fisk til hovedret" | "";
 }
