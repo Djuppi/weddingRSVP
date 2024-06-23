@@ -1,5 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import { FC } from "react";
+import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
 
 const WishesContainer: FC = () => (
   <Box
@@ -23,14 +24,11 @@ const WishesContainer: FC = () => (
       knyttet til både dette og overnatting. Vi vil derfor understreke at den
       største gaven for oss er deres tilstedeværelse på dagen, og forventer ikke
       noe utover dette. Mest av alt ønsker vi oss en storslagen bryllupsfest, og
-      å skape minner for livet med dere som vi er så glade i.
+      å skape minner for livet med dere som vi er så glade i <FavoriteOutlinedIcon fontSize="inherit" />
     </Typography>
     <Typography>
       Dersom noen likevel ønsker å gi en gave, setter vi pris på tilskudd til en
-      bryllupsreise. Dette vil vi opprette en egen konto for.{" "}
-    </Typography>
-    <Typography>
-      Takk igjen for at dere vil dele denne magiske dagen med oss ❤
+      bryllupsreise. Dette vil vi opprette en egen konto for.
     </Typography>
   </Box>
 );

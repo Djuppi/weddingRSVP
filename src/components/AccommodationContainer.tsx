@@ -11,7 +11,7 @@ const AccommodationContainer = () => {
       id="accommodation"
     >
       <Typography variant="h4" component="h2" sx={{ marginBottom: {sm: "1rem", md: "2rem"} }}>
-        Overnatting:
+        Overnatting
       </Typography>
       <Typography>
         Hotellet tilbyr alle våre gjester overnatting 1-2 netter til en ekstra
@@ -25,8 +25,8 @@ const AccommodationContainer = () => {
           <Typography>Kr. 1.700,- DKK per dobbeltrom</Typography>
         </ListItem>
       </List>
-      <Typography>
-      Dersom du/dere ønsker å overnatte på Skodsborg kan dette fylles inn via RSVP skjema.
+      <Typography fontStyle="italic">
+        *Hotellet har nå mottatt liste med alle som har meldt at de vil overnatte. 
       </Typography>
     </StyledPicInfoContainer>
   );

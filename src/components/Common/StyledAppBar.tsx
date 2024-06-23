@@ -40,7 +40,7 @@ const StyledAppBar = () => {
   };
   const pages = [
     { id: 1, Title: "Top", ref: "home" },
-    { id: 2, Title: "RSVP", ref: "rsvp" },
+    // { id: 2, Title: "RSVP", ref: "rsvp" },
     { id: 3, Title: "Info", ref: "info" },
     { id: 4, Title: "Program", ref: "program" },
     { id: 5, Title: "Gaveønsker", ref: "wishes" },

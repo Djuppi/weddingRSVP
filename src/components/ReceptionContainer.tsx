@@ -23,7 +23,7 @@ const ReceptionContainer = () => (
       Mottakelse/Reception
     </Typography>
     <Typography fontSize="small" fontStyle="italic">
-      Der vil her bli servert kanapéer og bobler m.m.
+      Servering av kanapéer og bobler m.m.
     </Typography>
     <List>
       <ListItem>

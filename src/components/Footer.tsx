@@ -1,4 +1,4 @@
-import { Box, Link, Typography } from "@mui/material";
+import { Box, Grid, Link, Typography } from "@mui/material";
 import { FC } from "react";
 
 const Footer: FC = () => {
@@ -15,26 +15,67 @@ const Footer: FC = () => {
       }}
       id="contact"
     >
-      <Box sx={{ display: "flex", flexDirection: "column", gap: ".5rem" }}>
-        <Typography variant="h5" component="h3">
-          Kontakt
-        </Typography>
-        <Typography fontStyle="italic">
-          For spørsmål/henvendelser, send oss en mail
-        </Typography>
-        <Link
-          sx={{ color: "#063300a2", textDecoration: "none" }}
-          href="mailto:askeogsus@gmail.com"
-        >
-          askeogsus@gmail.com
-        </Link>
-      </Box>
+      <Grid container spacing={2}>
+        <Grid item xs={12}>
+          <Typography variant="h5" component="h3">
+            Kontakt
+          </Typography>
+        </Grid>
+        
+        <Grid item xs={12} md={4}>
+          <Typography fontStyle="italic">Toastmaster</Typography>
+
+          <Link
+            sx={{ color: "#063300a2", textDecoration: "none" }}
+            href="https://www.facebook.com/renoldtc"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Renold T. Christopher
+          </Link>
+        </Grid>
+        <Grid item xs={12} md={4}>
+          <Typography fontStyle="italic">Maid of honor</Typography>
+
+          <Link
+            sx={{ color: "#063300a2", textDecoration: "none" }}
+            href="https://www.facebook.com/simone.bystadhagen"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Simone Bystadhagen
+          </Link>
+        </Grid>
+        <Grid item xs={12} md={4}>
+          <Typography fontStyle="italic">Best man</Typography>
+
+          <Link
+            sx={{ color: "#063300a2", textDecoration: "none" }}
+            href="https://www.facebook.com/mikkel.t.hansen.9"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Mikkel T. Hansen
+          </Link>
+        </Grid>
+        <Grid item xs={12}>
+          <Typography fontStyle="italic">
+            For spørsmål/henvendelser til oss, send en mail:
+          </Typography>
+          <Link
+            sx={{ color: "#063300a2", textDecoration: "none" }}
+            href="mailto:askeogsus@gmail.com"
+          >
+            askeogsus@gmail.com
+          </Link>
+        </Grid>
+      </Grid>
       <Box
         sx={{
           display: "flex",
           alignSelf: { sm: "center", md: "end" },
           flexDirection: "column",
-          marginTop: "1rem",
+          marginTop: { xs: "1rem", sm: "0" },
         }}
       >
         <Typography fontSize="small">

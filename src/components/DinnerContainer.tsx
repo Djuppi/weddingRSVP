@@ -60,10 +60,10 @@ const DinnerContainer = () => (
         <ListItemText primary="02:00 - Festen er slutt" />
       </ListItem>
     </List>
-    <Typography fontSize="small" fontStyle="italic">
-      *Vi gjør oppmerksom på at programmet ikke er 100% fastsatt, og endringer
+    {/* <Typography fontSize="small" fontStyle="italic">
+      *Programmet ikke er 100% fastsatt, og endringer
       kan forekomme.
-    </Typography>
+    </Typography> */}
   </StyledPicInfoContainer>
 );
 

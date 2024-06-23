@@ -9,7 +9,6 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import RSVP from "@components/RSVP";
 import InfoContainer from "@components/InfoContainer";
 import CeremonyContainer from "@components/CeremonyContainer";
 import IMAGES from "./Images";
@@ -101,13 +100,11 @@ function App() {
             </Typography>
             <Typography color="grey">
               Her vil vi oppdatere med alle detaljer om dagen, samt praktisk
-              informasjon fortløpende. Vi setter stor pris på om dere i første
-              omgang vil fylle ut RSVP skjemaet, og svare på vår invitasjon så
-              snart som mulig <FavoriteOutlinedIcon fontSize="inherit" />
+              informasjon fortløpende <FavoriteOutlinedIcon fontSize="inherit" />
             </Typography>
           </Box>
         </Box>
-        <RSVP />
+        {/* <RSVP /> */}
         <InfoContainer />
         <AccommodationContainer />
         <TransportContainer />

@@ -48,7 +48,6 @@ const TransportContainer = () => (
         >
           her
         </Link>
-        .
     </Typography>
   </StyledPicInfoContainer>
 );
