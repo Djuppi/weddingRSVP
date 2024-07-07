@@ -20,8 +20,7 @@ const MeetNGreetContainer = () => {
         Program 9. august
       </Typography>
       <Typography>
-        Til alle våre gjester som ankommer dagen før bryllupet. Dette er en den
-        perfekte anledning til å benytte seg av hotellets spa, før vi alle møtes
+        Til alle våre gjester som ankommer dagen før bryllupet. Dette er en god anledning til å benytte seg av hotellets spa, før vi alle møtes
         til litt mingling senere på kvelden. Vi har reservert bord i baren på
         hotellet fra klokken 20:00.
       </Typography>
