@@ -32,7 +32,7 @@ const WishesContainer: FC = () => {
         <FavoriteOutlinedIcon fontSize="inherit" />
       </Typography>
       <Typography>
-        Dersom noen ønsker å gi en gave, setter vi stor pris på tilskudd til en
+        Dersom noen ønsker å gi en gave, setter vi stor pris på tilskudd til
         bryllupsreise.
       </Typography>
       <Box
