@@ -1,3 +1,5 @@
+'use strict';
+
 import { Box, Typography, useTheme } from "@mui/material";
 import { FC } from "react";
 import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
@@ -61,8 +63,9 @@ const WishesContainer: FC = () => {
           },
         }}
       >
-        <Typography><strong>Vipps/MobilePay:</strong> 5872CB</Typography>
-        <Typography><strong>Kontonummer:</strong> 3030 38 01444</Typography>
+        <Typography><strong>Vipps:</strong> 5872CB</Typography>
+        <Typography><strong>MobilePay:</strong> +4748509057</Typography>
+        {/* <Typography><strong>Kontonummer:</strong> 3030 38 01444</Typography> */}
         <Typography>IBAN: NO66 3030 3801 444</Typography>
         <Typography sx={{ marginTop: "-1rem" }}>BIC/SWIFT: FLEKNO21XXX</Typography>
       </Box>

@@ -18,7 +18,7 @@ const Footer: FC = () => {
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <Typography variant="h5" component="h3">
-            Kontakt
+            Kontakt:
           </Typography>
         </Grid>
         
@@ -59,7 +59,7 @@ const Footer: FC = () => {
           </Link>
         </Grid>
         <Grid item xs={12}>
-          <Typography fontStyle="italic" fontSize={12}>
+          <Typography fontStyle="italic">
             For spørsmål/henvendelser til oss, send en mail:
           </Typography>
           <Link

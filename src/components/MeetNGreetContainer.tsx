@@ -1,11 +1,10 @@
-import React from "react";
+
 import StyledPicInfoContainer from "./Common/StyledPicInfoContainer";
 import { Typography } from "@mui/material";
 import IMAGES from "../Images";
 
-type Props = {};
 
-const MeetNGreetContainer = (props: Props) => {
+const MeetNGreetContainer = () => {
   return (
     <StyledPicInfoContainer
       orderImageDesktop={1}
