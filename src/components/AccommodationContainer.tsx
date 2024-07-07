@@ -14,20 +14,16 @@ const AccommodationContainer = () => {
         Overnatting
       </Typography>
       <Typography>
-        Hotellet tilbyr alle våre gjester overnatting 1-2 netter til en ekstra
-        god pris. Prisen inkluderer frokost, samt adgang til Spa & Fitness. Innsjekk på hotellet er fra kl. 15.00 begge dager.
+        Skal du overnatte? Se pris per rom under (inkludert frokost og inngang til Spa & Fitness). Innsjekk på hotellet er fra kl. 15.00 begge dager.
       </Typography>
       <List>
         <ListItem>
           <Typography>Kr. 1.400,- DKK per enkeltrom</Typography>
         </ListItem>
-        <ListItem>
+        <ListItem sx={{ marginTop: "-1rem" }}>
           <Typography>Kr. 1.700,- DKK per dobbeltrom</Typography>
         </ListItem>
       </List>
-      <Typography fontStyle="italic">
-        *Hotellet har nå mottatt liste med alle som har meldt at de vil overnatte. 
-      </Typography>
     </StyledPicInfoContainer>
   );
 };

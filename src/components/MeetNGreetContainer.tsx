@@ -17,7 +17,7 @@ const MeetNGreetContainer = () => {
         component="h2"
         sx={{ marginBottom: { sm: "1rem", md: "2rem" } }}
       >
-        Fredag 9. august
+        Program 9. august
       </Typography>
       <Typography>
         Til alle våre gjester som ankommer dagen før bryllupet. Dette er en den
