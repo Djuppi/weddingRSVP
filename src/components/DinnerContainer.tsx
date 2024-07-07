@@ -10,8 +10,8 @@ import Images from "../Images";
 
 const DinnerContainer = () => (
   <StyledPicInfoContainer
-    orderImageDesktop={1}
-    orderInfoDesktop={2}
+    orderImageDesktop={2}
+    orderInfoDesktop={1}
     image={Images.weddingDinner}
     id="dinner"
   >
@@ -21,6 +21,9 @@ const DinnerContainer = () => (
       sx={{ marginBottom: { sm: "1rem", md: "2rem" } }}
     >
       Middag og fest
+    </Typography>
+    <Typography fontSize="small" fontStyle="italic">
+      Vin, øl, brus/sodavand og alkoholfri drikke serveres hele aftenen.
     </Typography>
     <List>
       <ListItem>

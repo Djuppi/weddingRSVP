@@ -3,6 +3,7 @@ const IMAGES = {
   skodsborg: new URL("./assets/Skodsborg1.jpg", import.meta.url).href,
   transport: new URL("./assets/Skodsborg3.jpg", import.meta.url).href,
   accommodation: new URL("./assets/accommodation.jpeg", import.meta.url).href,
+  bar: new URL("./assets/Skodsborg_bar.jpg", import.meta.url).href,
   ceremony: new URL("./assets/Vielse1.jpg", import.meta.url).href,
   reception: new URL("./assets/Skodsborg2.jpg", import.meta.url).href,
   weddingDinner: new URL("./assets/VillaRex.jpg", import.meta.url).href,
@@ -19,6 +20,7 @@ const IMAGES = {
   discoBall: new URL("./assets/disco-ball.png", import.meta.url).href,
   nightFood: new URL("./assets/night-food.png", import.meta.url).href,
   moon: new URL("./assets/moon.png", import.meta.url).href,
+  bed: new URL("./assets/bed.png", import.meta.url).href,
   arch: new URL("./assets/wedding-arch.png", import.meta.url).href,
 };
 

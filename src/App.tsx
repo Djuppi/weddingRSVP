@@ -21,6 +21,7 @@ import TransportContainer from "@components/TransportContainer";
 import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/opacity.css";
+import MeetNGreetContainer from "@components/MeetNGreetContainer";
 
 const lightTheme = createTheme({
   palette: {
@@ -99,8 +100,8 @@ function App() {
               Velkommen til vår bryllupsside!
             </Typography>
             <Typography color="grey">
-              Her vil vi oppdatere med alle detaljer om dagen, samt praktisk
-              informasjon fortløpende <FavoriteOutlinedIcon fontSize="inherit" />
+              Scroll deg nedover for å få med deg alle detaljer om dagen, og annen praktisk
+              informasjon <FavoriteOutlinedIcon fontSize="inherit" />
             </Typography>
           </Box>
         </Box>
@@ -108,6 +109,7 @@ function App() {
         <InfoContainer />
         <AccommodationContainer />
         <TransportContainer />
+        <MeetNGreetContainer />
         <CeremonyContainer />
         <ReceptionContainer />
         <DinnerContainer />

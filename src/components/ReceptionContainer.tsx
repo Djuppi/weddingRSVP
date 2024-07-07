@@ -11,7 +11,7 @@ import Images from "../Images";
 const ReceptionContainer = () => (
   <StyledPicInfoContainer
     orderImageDesktop={2}
-    orderInfoDesktop={1}
+    orderInfoDesktop={2}
     image={Images.reception}
     id="program"
   >
@@ -28,9 +28,15 @@ const ReceptionContainer = () => (
     <List>
       <ListItem>
         <ListItemIcon>
+          <img src={Images.bed} width={20} alt="bed" />
+        </ListItemIcon>
+        <ListItemText primary="15:00 - Innsjekk for overnattende gjester" />
+      </ListItem>
+      <ListItem>
+        <ListItemIcon>
           <img src={Images.cheers} width={20} alt="champagne glasses" />
         </ListItemIcon>
-        <ListItemText primary="15:00 - Oppmøte på takterrassen" />
+        <ListItemText primary="15:00 - Reception på takterrassen" />
       </ListItem>
       <ListItem>
         <ListItemIcon>

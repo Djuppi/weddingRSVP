@@ -35,7 +35,7 @@ const Footer: FC = () => {
           </Link>
         </Grid>
         <Grid item xs={12} md={4}>
-          <Typography fontStyle="italic">Maid of honor</Typography>
+          <Typography fontStyle="italic">Forlover</Typography>
 
           <Link
             sx={{ color: "#063300a2", textDecoration: "none" }}
@@ -47,7 +47,7 @@ const Footer: FC = () => {
           </Link>
         </Grid>
         <Grid item xs={12} md={4}>
-          <Typography fontStyle="italic">Best man</Typography>
+          <Typography fontStyle="italic">Forlover</Typography>
 
           <Link
             sx={{ color: "#063300a2", textDecoration: "none" }}
@@ -59,7 +59,7 @@ const Footer: FC = () => {
           </Link>
         </Grid>
         <Grid item xs={12}>
-          <Typography fontStyle="italic">
+          <Typography fontStyle="italic" fontSize={12}>
             For spørsmål/henvendelser til oss, send en mail:
           </Typography>
           <Link

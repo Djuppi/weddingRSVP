@@ -11,8 +11,8 @@ import StyledPicInfoContainer from "./Common/StyledPicInfoContainer";
 const CeremonyContainer = () => {
   return (
     <StyledPicInfoContainer
-      orderImageDesktop={1}
-      orderInfoDesktop={2}
+      orderImageDesktop={2}
+      orderInfoDesktop={1}
       image={Images.ceremony}
       id="program"
     >
@@ -21,14 +21,14 @@ const CeremonyContainer = () => {
         component="h2"
         sx={{ marginBottom: { sm: "1rem", md: "2rem" } }}
       >
-        Program
+        Program 10. august
       </Typography>
       <List>
         <ListItem>
           <ListItemIcon>
             <img src={Images.meetUp} width={20} alt="Brides couple" />
           </ListItemIcon>
-          <ListItemText primary="13:00 - Oppmøte" />
+          <ListItemText primary="13:00 - Oppmøte ved vannet" />
         </ListItem>
         <ListItem>
           <ListItemIcon>

@@ -15,7 +15,7 @@ const AccommodationContainer = () => {
       </Typography>
       <Typography>
         Hotellet tilbyr alle våre gjester overnatting 1-2 netter til en ekstra
-        god pris. Prisen inkluderer frokost, samt adgang til Spa & Fitness.
+        god pris. Prisen inkluderer frokost, samt adgang til Spa & Fitness. Innsjekk på hotellet er fra kl. 15.00 begge dager.
       </Typography>
       <List>
         <ListItem>
