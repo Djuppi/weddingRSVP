@@ -126,6 +126,7 @@ export const tokens = (mode) => ({
         },
         goldAccent: {
           500: "#de9a348f",
+          600: "#ae7a318f",
         },
       }),
 });

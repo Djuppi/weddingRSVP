@@ -2,9 +2,12 @@ import "./App.css";
 import StyledAppBar from "@components/Common/StyledAppBar";
 import {
   Box,
+  Button,
   Divider,
+  Link,
   ThemeProvider,
   Typography,
+  colors,
   createTheme,
   useMediaQuery,
   useTheme,
@@ -22,6 +25,8 @@ import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/opacity.css";
 import MeetNGreetContainer from "@components/MeetNGreetContainer";
+import { useEffect } from "react";
+import { tokens } from "./theme";
 
 const lightTheme = createTheme({
   palette: {
@@ -33,6 +38,7 @@ const lightTheme = createTheme({
 function App() {
 
   const theme = useTheme();
+  const colors = tokens(theme.palette.mode)
   const isMediumScreen = useMediaQuery(theme.breakpoints.down("md"));
   const isLargeScreen = useMediaQuery(theme.breakpoints.down("lg"));
   
@@ -103,6 +109,10 @@ function App() {
               Scroll deg nedover for å få med deg alle detaljer om dagen, og annen praktisk
               informasjon <FavoriteOutlinedIcon fontSize="inherit" />
             </Typography>
+          </Box>
+          <Box>
+            <Typography color="grey">Last opp eller se bilder her</Typography>
+          <Button variant="contained" sx={{ backgroundColor: colors.goldAccent[500], width: "fit-content", "&:hover": { backgroundColor: colors.goldAccent[600] }}} href="https://photos.app.goo.gl/3ZKiqtVzSuLJ8hEx8">Bryllupsalbum</Button>
           </Box>
         </Box>
         {/* <RSVP /> */}
