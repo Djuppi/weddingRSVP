@@ -34,14 +34,12 @@ const lightTheme = createTheme({
   },
 });
 
-
 function App() {
-
   const theme = useTheme();
-  const colors = tokens(theme.palette.mode)
+  const colors = tokens(theme.palette.mode);
   const isMediumScreen = useMediaQuery(theme.breakpoints.down("md"));
   const isLargeScreen = useMediaQuery(theme.breakpoints.down("lg"));
-  
+
   return (
     <>
       <ThemeProvider theme={lightTheme}>
@@ -80,7 +78,7 @@ function App() {
           />
 
           <Typography
-            sx={{ fontWeight: "500"}}
+            sx={{ fontWeight: "500" }}
             variant="h4"
             color="black"
             className="calligraphy-font"
@@ -106,23 +104,34 @@ function App() {
               Velkommen til vår bryllupsside!
             </Typography>
             <Typography color="grey">
-              Scroll deg nedover for å få med deg alle detaljer om dagen, og annen praktisk
-              informasjon <FavoriteOutlinedIcon fontSize="inherit" />
+              Scroll deg nedover for å få med deg alle detaljer om dagen, og
+              annen praktisk informasjon{" "}
+              <FavoriteOutlinedIcon fontSize="inherit" />
             </Typography>
           </Box>
-          <Box>
+          {/* <Box>
             <Typography color="grey">Last opp eller se bilder her</Typography>
-          <Button variant="contained" sx={{ backgroundColor: colors.goldAccent[500], width: "fit-content", "&:hover": { backgroundColor: colors.goldAccent[600] }}} href="https://photos.app.goo.gl/3ZKiqtVzSuLJ8hEx8">Bryllupsalbum</Button>
-          </Box>
+            <Button
+              variant="contained"
+              sx={{
+                backgroundColor: colors.goldAccent[500],
+                width: "fit-content",
+                "&:hover": { backgroundColor: colors.goldAccent[600] },
+              }}
+              href="https://photos.app.goo.gl/3ZKiqtVzSuLJ8hEx8"
+            >
+              Bryllupsalbum
+            </Button>
+          </Box> */}
         </Box>
         {/* <RSVP /> */}
         <InfoContainer />
-        <AccommodationContainer />
-        <TransportContainer />
         <MeetNGreetContainer />
         <CeremonyContainer />
         <ReceptionContainer />
         <DinnerContainer />
+        <AccommodationContainer />
+        <TransportContainer />
         <WishesContainer />
         <Footer />
       </ThemeProvider>

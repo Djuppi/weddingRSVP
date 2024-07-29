@@ -1,8 +1,6 @@
-
 import StyledPicInfoContainer from "./Common/StyledPicInfoContainer";
-import { Typography } from "@mui/material";
+import { Link, Typography } from "@mui/material";
 import IMAGES from "../Images";
-
 
 const MeetNGreetContainer = () => {
   return (
@@ -20,11 +18,19 @@ const MeetNGreetContainer = () => {
         Program 9. august
       </Typography>
       <Typography>
-        Til alle våre gjester som ankommer dagen før bryllupet. Dette er en god anledning til å benytte seg av hotellets spa, før vi alle møtes
-        til litt mingling senere på kvelden. Vi har reservert bord i baren på
-        hotellet fra klokken 20:00.
+        Til alle våre gjester som ankommer dagen før bryllupet. Dette er en god
+        anledning til å benytte seg av hotellets spa, før vi alle møtes til litt
+        mingling senere på kvelden. Vi har reservert bord i baren på hotellet
+        fra klokken 20:00.
       </Typography>
-      <Typography>Vi gleder oss til å se dere alle sammen!</Typography>
+      <Link
+        sx={{ color: "#063300a2", textDecoration: "none" }}
+        href="https://skodsborg.dk/bar-og-restaurant/the-lobby/"
+        target="_blank"
+        rel="noopener"
+      >
+        Se info om The Lobby her
+      </Link>
     </StyledPicInfoContainer>
   );
 };

@@ -30,19 +30,19 @@ const DinnerContainer = () => (
         <ListItemIcon>
           <img src={Images.dinner} width={20} alt="menu" />
         </ListItemIcon>
-        <ListItemText primary="18:00 - Middag" />
-      </ListItem>
-      <ListItem>
-        <ListItemIcon>
-          <img src={Images.dj} width={20} alt="disk" />
-        </ListItemIcon>
-        <ListItemText primary="20:00 - DJ/underholdning" />
+        <ListItemText primary="17:30 - Middag" />
       </ListItem>
       <ListItem>
         <ListItemIcon>
           <img src={Images.cake} width={20} alt="cake" />
         </ListItemIcon>
-        <ListItemText primary="20:30 - Bryllupskake og petit fours med avec" />
+        <ListItemText primary="19:30 - Bryllupskake og petit fours med avec" />
+      </ListItem>
+      <ListItem>
+        <ListItemIcon>
+          <img src={Images.dj} width={20} alt="disk" />
+        </ListItemIcon>
+        <ListItemText primary="20:15 - DJ/underholdning" />
       </ListItem>
       <ListItem>
         <ListItemIcon>

@@ -43,10 +43,9 @@ const CeremonyContainer = () => {
           <ListItemText primary="14:15 - Gruppebilder/brudeparet tar bilder" />
         </ListItem>
       </List>
-      {/* <Typography fontSize={"small"} fontStyle={"italic"}>
-        Vi ber om at telefoner blir i lommen under vielsen. Det blir mulighet for å ta bilder i etterkant.
-    
-      </Typography> */}
+      <Typography fontSize={"small"} fontStyle={"italic"}>
+        *Vi ber om at mobil/kamera blir liggende i lommen eller vesken under vielsen. Og så blir det selvfølgelig mulighet for å ta bilder så snart den er ferdig. 
+      </Typography>
     </StyledPicInfoContainer>
   );
 };

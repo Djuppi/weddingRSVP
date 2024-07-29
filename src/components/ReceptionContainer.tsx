@@ -48,7 +48,7 @@ const ReceptionContainer = () => (
         <ListItemIcon>
           <img src={Images.table} width={20} alt="dinner table" />
         </ListItemIcon>
-        <ListItemText primary="17:30 - Bordsetting" />
+        <ListItemText primary="17:00 - Bordsetting" />
       </ListItem>
     </List>
   </StyledPicInfoContainer>
